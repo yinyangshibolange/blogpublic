@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>lazy-ani动态加载动画库</title>
+    <meta name="description" content="
+lazy-ani.js
+lazy-ani.js是一个自研的js库，他可以实现动态添加动画效果，
+使用场景
+在滚动到一个元素的指定位置时，触发设定的动画，指定位置可以相对元素进行上下设置
+使用方法
+设">
+    <meta name="keywords" content="js,animation">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        lazy-ani动态加载动画库
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_js库.html">js库</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：sada
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:15:11
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <p><img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/lC8FEW_XX_p-Ce4ZEq1wnqkx.png" alt=""></p>
+<h1>lazy-ani.js</h1>
+<p>lazy-ani.js是一个自研的js库，他可以实现动态添加动画效果，</p>
+<h2>使用场景</h2>
+<p>在滚动到一个元素的指定位置时，触发设定的动画，指定位置可以相对元素进行上下设置</p>
+<h2>使用方法</h2>
+<h3>设定动画</h3>
+<p>设定动画的方式一共有三种，</p>
+<ul>
+<li>第一种：class方式</li>
+</ul>
+<p>animate.css有很多优秀的动画效果，我们以这个动画效果库为例，先将这个animate.css引入到html head中，</p>
+<pre><code class="language-html"> &lt;link rel=&quot;stylesheet&quot; href=&quot;animate.min.css&quot;&gt;
+</code></pre>
+<p>然后再在需要设置动画效果的dom元素中设置</p>
+<pre><code class="language-html">&lt;img src=&quot;...&quot; class=&quot;lazy-ani&quot; data-ani-class=&quot;animate__animated animate__fadeInTopLeft&quot;&gt;
+</code></pre>
+<p>最后初始化lazyAni即可</p>
+<pre><code class="language-html">&lt;script&gt;
+lazyAni()
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li>第二种：自定义animation方式</li>
+</ul>
+<p>这种方式分两种情况
+a. 在data中设置keyframes动画，style中动态添加keyframes
+在dataset中设置keyframes关键帧,比如在dom中写</p>
+<pre><code class="language-html">&lt;img src=&quot;...&quot; class=&quot;lazy-ani&quot; data-ani-0%=&quot;transform: rotate(180deg)&quot; data-ani-50%=&quot;transform: rotate(100deg)&quot; data-ani-100%=&quot;transform: rotate(0deg)&quot;&gt;
+</code></pre>
+<p>那么在调用lazyAni() 之后会在head节点在动态添加如下代码</p>
+<pre><code class="language-html">&lt;style&gt;
+    @keyframes animation-${k} {
+     0% {transform: rotate(180deg)}
+     50% {transform: rotate(100deg)}
+     100% {transform: rotate(0deg)}
+    }
+&lt;/style&gt;
+</code></pre>
+<p>ps: 支持from和to，分别用data-ani-from和data-ani-to进行设置</p>
+<p>animation-${k}是默认动画名称（因为没有设置data-ani-name），k是当前html中的第k个lazy-ani元素。如果在dom设置data-ani-name的话，style中的keyframes的名称就会是data-ani-name的值</p>
+<p>另外还有三个可设置的参数，分别是
+data-ani-duration // 动画持续时间，对应css3中animation动画的duration参数，默认0.3s
+data-ani-function // 对应css3中animation动画的timing function参数，默认ease-in-out
+data-ani-delay //  延迟触发事件，对应css3中animation动画的delay参数，默认0s</p>
+<p>b. 已经定义好keyframes</p>
+<p>这种情况和上一种情况就差了已经设置好了keyframe名称，比如说我想用复用某个元素设置的自定义动画，此时就不需要再次定义动画，直接设置和那个元素设置的动画名称一样的动画名称即可。</p>
+<pre><code class="language-html">&lt;img src=&quot;...&quot; class=&quot;lazy-ani&quot; data-ani-name=&quot;tranRotate&quot; data-ani-0%=&quot;transform: rotate(180deg)&quot; data-ani-50%=&quot;transform: rotate(100deg)&quot; data-ani-100%=&quot;transform: rotate(0deg)&quot;&gt;
+
+&lt;!-- 第二个图片拥有与上一个图片一样的动画效果 --&gt;
+&lt;img src=&quot;...&quot; class=&quot;lazy-ani&quot; data-ani-name=&quot;tranRotate&quot;&gt;
+</code></pre>
+<p>另外也可以自行在css文件或者style节点下定义keyframes，然后使用定义好的动画名称</p>
+<pre><code class="language-html">&lt;style&gt;
+    @keyframes fadein {
+    from {opacity: 0}
+    to {opacity: 1}
+    }
+&lt;/style&gt;
+&lt;img src=&quot;...&quot; class=&quot;lazy-ani&quot; data-ani-name=&quot;fadein&quot;&gt;
+</code></pre>
+<p>这种情况的动画参数data-ani-duration，data-ani-function，data-ani-delay与上一种情况一致，这里就不再赘述</p>
+<h3>设定动画触发位置</h3>
+<p>触发位置的设置参数是data-ani-trigger,可选值有top,bottom,top+(\d+),top+(\d+%),top-(\d+),top-(\d+%),bottom+(\d+),bottom+(\d+%),bottom-(\d+),bottom-(\d+%)</p>
+<ul>
+<li><p>top,bottom好理解，就是元素的顶部和元素底部，当滚动到这些位置时触发动画</p>
+</li>
+<li><p>\d+表示数字，比如5，10，100等等，比如top+100就表示元素顶部往下100px触发</p>
+</li>
+<li><p>\d+%表示百分数,比如30%，50%等等，这个百分数对应的是元素的高度，比如top+50%和bottom-50%就是到元素的中间位置触发动画</p>
+</li>
+</ul>
+<h3>ps: lazy-ani.js如果要和lazyload.js一起使用，那么必须固定lazyload的图片的宽高，否者会定位不准。如果懒加载的图片没有使用lazy-ani动画，那么只要让他脱离文档流，这样的话也不会影响其他动画的触发。</h3>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                            <a class="tag-item" href="/site/tag_js.html">#js</a>
+                            
+                                
+                        
+                            <a class="tag-item" href="/site/tag_animation.html">#animation</a>
+                            
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

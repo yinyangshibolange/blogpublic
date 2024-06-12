@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>首页</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- <link rel="stylesheet" href="css/checkbix.min.css">
+    <script src="js/checkbix.min.js"></script> -->
+    <link rel="stylesheet" href="/css/modules/preview.css">
+
+    
+</head>
+
+<body><div id="app">
+<div id="container" class="container">
+    <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+    <div class="container-content">
+        
+ <div class="list">
+     
+         <a class="item" href="/site/detail_31f03d0b-ba1a-420f-9355-42fdafacec06.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/raAKVnDcRWPAOka2BCbUSbRx.jpeg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        lazy-ani动态加载动画库
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    
+lazy-ani.js
+lazy-ani.js是一个自研的js库，他可以实现动态添加动画效果，
+使用场景
+在滚动到一个元素的指定位置时，触发设定的动画，指定位置可以相对元素进行上下设置
+使用方法
+设
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：sada
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:15:11
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_095a8353-9f35-4011-9e08-6aab043d6031.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/QChxye4S6g9KentYriVbZcGn.jpg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        Beacon
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    Beacon
+这个api可以让在页面关闭时，发送一个请求到服务器，由于传统的xhr请求不可靠，不能保证发送成功，所以诞生了这个api，这在某些特殊场景下将会比较实用
+食用方法如下：
+navigator
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:15:18
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_8f7fc2be-bd3b-46be-952a-e279f7ddd0ba.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/wb1LXcumnaVIv5vsX2EPUFEM.jpg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        BroadcastChannel
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    BroadcastChannel作用
+此API实现了在同源浏览器下不同tab，窗口，frame，iframe之前进行简单通讯的功能，是监听者模式设计思想
+使用方法
+新建一个BroadcastChann
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:15:23
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_32ba1e6d-91ae-4963-b127-421d2335dff4.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/moZH5L3qrfWdsWvegpl3517z.jpg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        getBoundingClientRect
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    Day.js
+Day.js是一个可以让你轻松处理日期和时间的JavaScript库。它的设计目的是取代Moment.js，具有更小的文件大小、更快的速度和更好的性能。
+安装
+你可以通过npm或者CDN
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:15:28
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_44672616-5240-4376-983a-a2c94e38ebf0.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/IaDqlkymyXcUkjBJbbzkBn5u.png" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        利用python实现url转pdf
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    转换url为pdf
+第一步：安装依赖和软件
+需要用到两个东西，一个pdfkit 的 python 依赖，另一个是名为wkhtmltopdf的软件，
+安装步骤
+
+pdfkit安装，直接在命令行中执行pi
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:15:50
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_61db31ec-6950-4940-940b-95e09e01d29c.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/9FF8tAa5tI492e01Y16LciPz.jpeg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        开发票算法
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    ps: 可以做个小程序
+最近开发票，为了凑一个数，要大于开票额度，但是又不能超出太多（生活拮据，精打细算），所以想出要不弄个算法来实现，一个个加是在太费时间
+如何在一个数组找出随即个数的数字之和大于某
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:36
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_f298c9ac-c243-4c9d-8a05-9fc204b75ed6.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        billfish
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    billfish
+
+billfish是一个图片管理软件，他的好处是可以把我们项目中的素材统一到软件中进行管理，方便我们进行操作，
+billfish搭配浏览器采集插件，可以很轻松的采集浏览器中的图片到软
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:17:13
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_1c1ce198-0396-4873-aa4b-01ea7e59bb98.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        PowerToys
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    PowerToys
+这个微软的官方软件地址是https://learn.microsoft.com/zh-cn/windows/powertoys/
+这个软件具有许多实用小工具，能帮助我们更好更方便地
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:17:08
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_0fcece4d-3f40-4ea3-8989-d8972ed37d94.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/S0pwGbcQCAAmz14oR36wx9o-.jpeg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        snipaste
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    
+Snipaste 是截图和贴图
+
+F1是快速截图
+截图时有一个附加功能，那就是颜色选择器，就是按F1你既可以截图，也可以当颜色选择器，真的是前端工程师的开发神器
+F3是贴图
+
+食用方法
+截图就不说了
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:17:19
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_37e1c415-62f9-449d-b4f4-cea74af8157c.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/bPeYt-FNLoLedP84pXWnXEtJ.jpeg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        基础面试问题整理
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    前端技术：
+html部分：
+1、块级元素和行内元素有哪些，块级元素和行内元素的区别
+块级元素
+1)块级元素可以独占一行。
+2)块级元素的默认宽度为100%，默认高度由子元素或者内容决定。
+3)块级元素
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-12 11:25:42
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+ </div>
+
+
+        
+<div class="doc_page">
+ 
+<ul class="">
+ <li>
+  <a href="/index_1.html">&lt;</a>
+ </li>
+ 
+ <li class="">
+   <a class="active" href="/index_1.html">1</a>
+ </li>
+ 
+ <li class="">
+   <a class="" href="/index_2.html">2</a>
+ </li>
+ 
+ 
+ <li>
+  <a href="/index_2.html">&gt;</a>
+ </li>
+</ul>
+</div>
+    </div>
+
+
+</div>
+
+
+<script>
+</script>
+</div></body>
+
+</html>

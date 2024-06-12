@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>浅谈MIME-TYPE</title>
+    <meta name="description" content="众所周知，HTTP的请求报文是由请求行（METHOD URL HTTP-Version 回车）+ 请求头 + 空行 + 请求体构成，响应报文是由响应行 + 响应头 + 空行 + 响应体构成, 那么如何">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        浅谈MIME-TYPE
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_折腾的前端.html">折腾的前端</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:16:30
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <p>众所周知，HTTP的请求报文是由请求行（METHOD URL HTTP-Version 回车）+ 请求头 + 空行 + 请求体构成，响应报文是由响应行 + 响应头 + 空行 + 响应体构成, 那么如何才能确定这个响应体是什么格式的内容呢，那就需要用到MIME-TYPE了。</p>
+<p>在上传下载的时候也会用到MIME-TYPE, 上传的时候在input中定义accpet属性，即可规定可选择的文件类型。在HTTP请求中MIME-TYPE在headers里的属性叫content-type，请求报文中的content-type可以让服务器接收的时候可以确定请求体的类型，而做出不同的处理，响应报文中的content-type则是让浏览器或者请求程序（例如ajax）或者其他请求程序（例如python等）对响应体做出不同的处理。</p>
+<p>MIME-TYPE是由类型+子类型组成的（中间加个左斜杠/），对于前端经常进行数据请求的常用类型有下面几种：</p>
+<ol>
+<li><p>application/x-www-form-urlencoded
+这种是用键值对的方式来传递数据的，常用于get方法，直接在URL后面带上参数即可（注意中文和特殊字符将被自动转码）</p>
+</li>
+<li><p>multipart/form-data
+表单形式提交，常用于文件上传</p>
+</li>
+<li><p>application/json
+POST和PUT常用，用于提交JSON数据，好处是能保留数字型和布尔型不被转为字符型，也不会被转码，非常常用</p>
+</li>
+</ol>
+<p>IANA 是 MIME 媒体类型的官方注册机构，进入 <a href="https://www.iana.org/assignments/media-types/media-types.xhtml" title="https://www.iana.org/assignments/media-types/media-types.xhtml">https://www.iana.org/assignments/media-types/media-types.xhtml</a> 可查看MIME-TYPE大全，并工具需求检索。</p>
+<p>下面是常用的一些MIME-TYPE，可以用ctrl+f进行查找</p>
+<table>
+<thead>
+<tr>
+<th>扩展名</th>
+<th>文档类型</th>
+<th>MIME 类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.aac</td>
+<td>AAC 音频</td>
+<td>audio/aac</td>
+</tr>
+<tr>
+<td>.abw</td>
+<td>AbiWord 文档</td>
+<td>application/x-abiword</td>
+</tr>
+<tr>
+<td>.apng</td>
+<td>动态可移植网络图形（APNG）图像</td>
+<td>image/apng</td>
+</tr>
+<tr>
+<td>.arc</td>
+<td>归档文件（嵌入多个文件）</td>
+<td>application/x-freearc</td>
+</tr>
+<tr>
+<td>.avif</td>
+<td>AVIF 图像</td>
+<td>image/avif</td>
+</tr>
+<tr>
+<td>.avi</td>
+<td>AVI：音频视频交织文件格式（Audio Video Interleave）</td>
+<td>video/x-msvideo</td>
+</tr>
+<tr>
+<td>.azw</td>
+<td>Amazon Kindle 电子书格式</td>
+<td>application/vnd.amazon.ebook</td>
+</tr>
+<tr>
+<td>.bin</td>
+<td>任何二进制数据类型</td>
+<td>application/octet-stream</td>
+</tr>
+<tr>
+<td>.bmp</td>
+<td>Windows OS/2 位图</td>
+<td>image/bmp</td>
+</tr>
+<tr>
+<td>.bz</td>
+<td>BZip 归档</td>
+<td>application/x-bzip</td>
+</tr>
+<tr>
+<td>.bz2</td>
+<td>BZip2 归档</td>
+<td>application/x-bzip2</td>
+</tr>
+<tr>
+<td>.cda</td>
+<td>CD 音频</td>
+<td>application/x-cdf</td>
+</tr>
+<tr>
+<td>.csh</td>
+<td>C-Shell 脚本</td>
+<td>application/x-csh</td>
+</tr>
+<tr>
+<td>.css</td>
+<td>层叠样式表（CSS）</td>
+<td>text/css</td>
+</tr>
+<tr>
+<td>.csv</td>
+<td>逗号分隔值（CSV）</td>
+<td>text/csv</td>
+</tr>
+<tr>
+<td>.doc</td>
+<td>Microsoft Word</td>
+<td>application/msword</td>
+</tr>
+<tr>
+<td>.docx</td>
+<td>Microsoft Word（OpenXML）</td>
+<td>application/vnd.openxmlformats-officedocument.wordprocessingml.document</td>
+</tr>
+<tr>
+<td>.eot</td>
+<td>MS 嵌入式 OpenType 字体</td>
+<td>application/vnd.ms-fontobject</td>
+</tr>
+<tr>
+<td>.epub</td>
+<td>电子出版（EPUB）</td>
+<td>application/epub+zip</td>
+</tr>
+<tr>
+<td>.gz</td>
+<td>GZip 压缩归档</td>
+<td>application/gzip</td>
+</tr>
+<tr>
+<td>.gif</td>
+<td>图像互换格式（GIF）</td>
+<td>image/gif</td>
+</tr>
+<tr>
+<td>.htm, .html</td>
+<td>超文本标记语言（HTML）</td>
+<td>text/html</td>
+</tr>
+<tr>
+<td>.ico</td>
+<td>图标（Icon）格式</td>
+<td>image/vnd.microsoft.icon</td>
+</tr>
+<tr>
+<td>.ics</td>
+<td>iCalendar 格式</td>
+<td>text/calendar</td>
+</tr>
+<tr>
+<td>.jar</td>
+<td>Java 归档（JAR）</td>
+<td>application/java-archive</td>
+</tr>
+<tr>
+<td>.jpeg, .jpg</td>
+<td>JPEG 图像</td>
+<td>image/jpeg</td>
+</tr>
+<tr>
+<td>.js</td>
+<td>JavaScript</td>
+<td>text/javascript （规范：HTML 和 RFC 9239）</td>
+</tr>
+<tr>
+<td>.json</td>
+<td>JSON 格式</td>
+<td>application/json</td>
+</tr>
+<tr>
+<td>.jsonld</td>
+<td>JSON-LD 格式</td>
+<td>application/ld+json</td>
+</tr>
+<tr>
+<td>.mid, .midi</td>
+<td>音乐数字接口（MIDI）</td>
+<td>audio/midi、audio/x-midi</td>
+</tr>
+<tr>
+<td>.mjs</td>
+<td>JavaScript 模块</td>
+<td>text/javascript</td>
+</tr>
+<tr>
+<td>.mp3</td>
+<td>MP3 音频</td>
+<td>audio/mpeg</td>
+</tr>
+<tr>
+<td>.mp4</td>
+<td>MP4 视频</td>
+<td>video/mp4</td>
+</tr>
+<tr>
+<td>.mpeg</td>
+<td>MPEG 视频</td>
+<td>video/mpeg</td>
+</tr>
+<tr>
+<td>.mpkg</td>
+<td>Apple 安装包</td>
+<td>application/vnd.apple.installer+xml</td>
+</tr>
+<tr>
+<td>.odp</td>
+<td>开放文档演示稿文档</td>
+<td>application/vnd.oasis.opendocument.presentation</td>
+</tr>
+<tr>
+<td>.ods</td>
+<td>开放文档表格文档</td>
+<td>application/vnd.oasis.opendocument.spreadsheet</td>
+</tr>
+<tr>
+<td>.odt</td>
+<td>开放文档文本文档</td>
+<td>application/vnd.oasis.opendocument.text</td>
+</tr>
+<tr>
+<td>.oga</td>
+<td>OGG 音频</td>
+<td>audio/ogg</td>
+</tr>
+<tr>
+<td>.ogv</td>
+<td>OGG 视频</td>
+<td>video/ogg</td>
+</tr>
+<tr>
+<td>.ogx</td>
+<td>OGG</td>
+<td>application/ogg</td>
+</tr>
+<tr>
+<td>.opus</td>
+<td>Opus 音频</td>
+<td>audio/opus</td>
+</tr>
+<tr>
+<td>.otf</td>
+<td>OpenType 字体</td>
+<td>font/otf</td>
+</tr>
+<tr>
+<td>.png</td>
+<td>便携式网络图形</td>
+<td>image/png</td>
+</tr>
+<tr>
+<td>.pdf</td>
+<td>Adobe 便携式文档格式（PDF）</td>
+<td>application/pdf</td>
+</tr>
+<tr>
+<td>.php</td>
+<td>超文本预处理器（Personal Home Page）</td>
+<td>application/x-httpd-php</td>
+</tr>
+<tr>
+<td>.ppt</td>
+<td>Microsoft PowerPoint</td>
+<td>application/vnd.ms-powerpoint</td>
+</tr>
+<tr>
+<td>.pptx</td>
+<td>Microsoft PowerPoint（OpenXML）</td>
+<td>application/vnd.openxmlformats-officedocument.presentationml.presentation</td>
+</tr>
+<tr>
+<td>.rar</td>
+<td>RAR 归档</td>
+<td>application/vnd.rar</td>
+</tr>
+<tr>
+<td>.rtf</td>
+<td>富文本格式（RTF）</td>
+<td>application/rtf</td>
+</tr>
+<tr>
+<td>.sh</td>
+<td>伯恩 shell 脚本</td>
+<td>application/x-sh</td>
+</tr>
+<tr>
+<td>.svg</td>
+<td>可缩放矢量图形（SVG）</td>
+<td>image/svg+xml</td>
+</tr>
+<tr>
+<td>.tar</td>
+<td>磁带归档（TAR）</td>
+<td>application/x-tar</td>
+</tr>
+<tr>
+<td>.tif, .tiff</td>
+<td>标签图像文件格式（TIFF）</td>
+<td>image/tiff</td>
+</tr>
+<tr>
+<td>.ts</td>
+<td>MPEG 传输流</td>
+<td>video/mp2t</td>
+</tr>
+<tr>
+<td>.ttf</td>
+<td>TrueType 字体</td>
+<td>font/ttf</td>
+</tr>
+<tr>
+<td>.txt</td>
+<td>文本（通常是 ASCII 或 ISO 8859-n）</td>
+<td>text/plain</td>
+</tr>
+<tr>
+<td>.vsd</td>
+<td>Microsoft Visio</td>
+<td>application/vnd.visio</td>
+</tr>
+<tr>
+<td>.wav</td>
+<td>波形音频格式</td>
+<td>audio/wav</td>
+</tr>
+<tr>
+<td>.weba</td>
+<td>WEBM 音频</td>
+<td>audio/webm</td>
+</tr>
+<tr>
+<td>.webm</td>
+<td>WEBM 视频</td>
+<td>video/webm</td>
+</tr>
+<tr>
+<td>.webp</td>
+<td>WEBP 图像</td>
+<td>image/webp</td>
+</tr>
+<tr>
+<td>.woff</td>
+<td>Web 开放字体格式（WOFF）</td>
+<td>font/woff</td>
+</tr>
+<tr>
+<td>.woff2</td>
+<td>Web 开放字体格式（WOFF）</td>
+<td>font/woff2</td>
+</tr>
+<tr>
+<td>.xhtml</td>
+<td>XHTML</td>
+<td>application/xhtml+xml</td>
+</tr>
+<tr>
+<td>.xls</td>
+<td>Microsoft Excel</td>
+<td>application/vnd.ms-excel</td>
+</tr>
+<tr>
+<td>.xlsx</td>
+<td>Microsoft Excel（OpenXML）</td>
+<td>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</td>
+</tr>
+<tr>
+<td>.xml</td>
+<td>XML</td>
+<td>RFC 7303（section 4.1）推荐使用 application/xml，但有时仍会使用 text/xml。你可以将特定的 MIME 类型分配给具有 .xml 扩展名的文件，这取决于其内容的解释方式。例如，Atom 消息来源是 application/atom+xml，而 application/xml 是默认的有效值。</td>
+</tr>
+<tr>
+<td>.xul</td>
+<td>XUL</td>
+<td>application/vnd.mozilla.xul+xml</td>
+</tr>
+<tr>
+<td>.zip</td>
+<td>ZIP 归档</td>
+<td>application/zip</td>
+</tr>
+<tr>
+<td>.3gp</td>
+<td>3GPP 音视频容器</td>
+<td>video/3gpp；如果不包含视频则为 audio/3gpp</td>
+</tr>
+<tr>
+<td>.3g2</td>
+<td>3GPP2 音视频容器</td>
+<td>video/3gpp2；如果不包含视频则为 audio/3gpp2</td>
+</tr>
+<tr>
+<td>.7z</td>
+<td>7-zip 归档</td>
+<td>application/x-7z-compressed</td>
+</tr>
+</tbody></table>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

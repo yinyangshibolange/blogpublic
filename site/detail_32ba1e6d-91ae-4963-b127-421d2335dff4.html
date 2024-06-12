@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>getBoundingClientRect</title>
+    <meta name="description" content="Day.js
+Day.js是一个可以让你轻松处理日期和时间的JavaScript库。它的设计目的是取代Moment.js，具有更小的文件大小、更快的速度和更好的性能。
+安装
+你可以通过npm或者CDN">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        getBoundingClientRect
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_mdn.html">mdn</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:15:28
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h1>Day.js</h1>
+<p>Day.js是一个可以让你轻松处理日期和时间的JavaScript库。它的设计目的是取代Moment.js，具有更小的文件大小、更快的速度和更好的性能。</p>
+<h2>安装</h2>
+<p>你可以通过npm或者CDN安装Day.js：</p>
+<h3>NPM</h3>
+<pre><code>$ npm install dayjs
+</code></pre>
+<h3>CDN</h3>
+<pre><code>&lt;script src=&quot;https://unpkg.com/dayjs/dist/dayjs.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2>使用</h2>
+<p>Day.js提供了一个全局dayjs函数，可以创建一个Day.js实例：</p>
+<pre><code>const now = dayjs();
+</code></pre>
+<p>使用Day.js实例，你可以使用更多的API进行日期和时间的操作：</p>
+<pre><code>now.add(1, &quot;month&quot;);
+now.subtract(7, &quot;days&quot;);
+now.startOf(&quot;day&quot;);
+</code></pre>
+<p>此外，你还可以使用Day.js实例格式化日期：</p>
+<pre><code>now.format(&quot;DD/MM/YYYY HH:mm&quot;);
+</code></pre>
+<h2>总结</h2>
+<p>Day.js是一个强大的JavaScript库，可以帮助你轻松处理日期和时间，比Moment.js更轻量级、更快速、更高性能。它提供了一系列API，可以让你轻松操作、格式化日期和时间。</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

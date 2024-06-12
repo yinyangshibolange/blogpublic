@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>分享下我的nas配置</title>
+    <meta name="description" content="硬件
+
+主板： 100 h110 主板一个 wifi 插槽一个 ngff sata ，2 个 sata3.0，还有个空的 sata 1 个 pcie3.0×1， 一个空的显卡槽，主要是自带 dc 供电">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        分享下我的nas配置
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_折腾的电脑.html">折腾的电脑</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:16:43
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h2>硬件</h2>
+<ul>
+<li>主板： 100 h110 主板一个 wifi 插槽一个 ngff sata ，2 个 sata3.0，还有个空的 sata 1 个 pcie3.0×1， 一个空的显卡槽，主要是自带 dc 供电接口，支持 6、7 代 cpu</li>
+<li>cpu：35元 g4560t </li>
+<li>显卡： 核显 hd610</li>
+<li>内存： 两条ddr4 4+4  53 元</li>
+<li>网卡： 2.5g网卡32 元 ； 板载一个千兆网卡</li>
+<li>电源： 老惠普笔记本 dc 电源拿来用正好适配</li>
+<li>散热器： 随意 20 元买个</li>
+<li>机箱： 35 元 h2 机箱 3 个 3.5 盘位，1 个 2.5 盘位</li>
+<li>硬盘： 2 个是 3t 168+135 303 元 一个西数蓝盘一个希捷，都不是 24 小时的，所以设置了晚上早上定时开关机还有 2 小时 硬盘休眠</li>
+</ul>
+<h2>价格</h2>
+<p>主板 100+ cpu35+ 内存53+ 网卡32+ 散热20+ 机箱35+ 硬盘303 
+一共 578 元 一套配齐
+不算硬盘的话就 275 元</p>
+<h2>配置</h2>
+<p>系统呢就是喜闻乐见的黑群晖，不过我上某宝买了洗白码，可以登录群晖账户，可以通过群晖服务器进行连接，后来我又把给家里的路由器设置了 ipv6，通过 ddns 添加域名解析 ipv6，现在用自己的域名也能访问群晖，早之前用 zerotier 连接，后来想想给电视安装 zerotier 不知道用啥方案，如果用软路由的话还得买机器不划算。而且现在的新路由器好多都支持 ipv6，根本不需要花钱买内网穿透，免费的限制太多，基本都不支持自定义域名。如果实在是需要 ipv4 访问的话，也可以使用 cloudflare 对 ipv6 线路进行代理，从而实现 ipv4 访问 ipv6 。</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

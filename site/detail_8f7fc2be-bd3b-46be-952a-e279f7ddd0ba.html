@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>BroadcastChannel</title>
+    <meta name="description" content="BroadcastChannel作用
+此API实现了在同源浏览器下不同tab，窗口，frame，iframe之前进行简单通讯的功能，是监听者模式设计思想
+使用方法
+新建一个BroadcastChann">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        BroadcastChannel
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_mdn.html">mdn</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:15:23
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h2>BroadcastChannel作用</h2>
+<p>此API实现了在同源浏览器下不同tab，窗口，frame，iframe之前进行简单通讯的功能，是监听者模式设计思想</p>
+<h3>使用方法</h3>
+<p>新建一个BroadcastChannel对象</p>
+<pre><code class="language-javascript">var channel = new BroadcastChannel(&#39;my_channel&#39;);
+</code></pre>
+<p>在需要监听广播的地方监听页面</p>
+<pre><code class="language-javascript">channel.onmessage = function(ev) {
+console.log(ev.data)
+}
+</code></pre>
+<h3>发送消息</h3>
+<pre><code class="language-javascript">channel.postMessage(&quot;your message&quot;)
+</code></pre>
+<p>ps: 可以发送任意类型的数据</p>
+<p><strong>断开连接</strong></p>
+<p>channel.close()</p>
+<h2>来个demo测试一下看看</h2>
+<p>新建三个html文件</p>
+<h3>第一个</h3>
+<pre><code class="language-html">&lt;body&gt;
+
+&lt;input id=&quot;my_input&quot; /&gt;
+
+&lt;div id=&quot;show_input_value&quot;&gt; &lt;/div&gt;
+
+&lt;script&gt;
+
+var channel = new BroadcastChannel(&quot;my_channel&quot;)
+
+channel.onmessage = function (ev) {
+
+console.log(ev)
+
+document.getElementById(&quot;show_input_value&quot;).innerText=ev.data
+}
+
+document.getElementById(&quot;my_input&quot;).oninput = function (ev) {
+
+document.getElementById(&quot;show_input_value&quot;).innerText=this.value
+
+channel.postMessage(this.value)
+
+}
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+</code></pre>
+<h3>第二个</h3>
+<pre><code class="language-html">&lt;body&gt;
+
+&lt;div id=&quot;show_input_value&quot;&gt; &lt;/div&gt;
+
+&lt;script&gt;
+
+var channel = new BroadcastChannel(&quot;my_channel&quot;)
+
+  
+
+channel.onmessage = function (ev) {
+
+console.log(ev)
+
+document.getElementById(&quot;show_input_value&quot;).innerText=ev.data
+
+}
+
+  
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+</code></pre>
+<h3>第三个</h3>
+<pre><code class="language-html">&lt;body&gt;
+&lt;iframe id=&quot;my_iframe&quot; src=&quot;index.html&quot;&gt;
+&lt;/iframe&gt;
+&lt;/body&gt;
+</code></pre>
+<p>在目录下运行anywhere，保证三个html在同一个源下
+<img src="http://rqisd4yi1.hd-bkt.clouddn.com/Snipaste_2023-03-20_15-31-28.png" alt="Snipaste_2023-03-20_15-31-28.png"></p>
+<p>依次打开网址
+1.<a href="http://ip:port(%E4%BD%A0%E7%9A%84ip%E5%92%8C%E7%AB%AF%E5%8F%A3)">http://ip:port(你的ip和端口)</a>
+2.<a href="http://ip:port(%E4%BD%A0%E7%9A%84ip%E5%92%8C%E7%AB%AF%E5%8F%A3%EF%BC%8C%E5%BC%80%E4%B8%A4%E4%B8%AA%EF%BC%8C%E6%B5%8B%E8%AF%95tab%E6%A0%87%E7%AD%BE%E9%A1%B5%E7%9A%84%E9%80%9A%E8%AE%AF)">http://ip:port(你的ip和端口，开两个，测试tab标签页的通讯)</a>
+3.<a href="http://ip:port/test_iframe.html">http://ip:port/test_iframe.html</a>
+4.<a href="http://ip:port/newchannel.html%EF%BC%88%E7%94%A8%E4%BA%8E%E5%B1%95%E7%A4%BA">http://ip:port/newchannel.html（用于展示</a> 第二个channel实例是否可以监听）</p>
+<p>在一个网页的输入框中随意输入一些内容，
+<img src="http://rqisd4yi1.hd-bkt.clouddn.com/Snipaste_2023-03-20_16-11-08.png" alt="Snipaste_2023-03-20_16-11-08.png"></p>
+<p>然后查看其他三个网页的内容，显示如下，这只是一个小demo，更多使用场景需要更深入的探索</p>
+<p><img src="http://rqisd4yi1.hd-bkt.clouddn.com/Snipaste_2023-03-20_16-11-20.png" alt="Snipaste_2023-03-20_16-11-20.png"></p>
+<p><img src="http://rqisd4yi1.hd-bkt.clouddn.com/Snipaste_2023-03-20_16-11-27.png" alt="Snipaste_2023-03-20_16-11-27.png"></p>
+<p><img src="http://rqisd4yi1.hd-bkt.clouddn.com/Snipaste_2023-03-20_16-11-32.png" alt="Snipaste_2023-03-20_16-11-32.png"></p>
+<p>html demo可以到我的gitee仓库下获取
+<a href="https://gitee.com/mrhki/web-api-demo.git">https://gitee.com/mrhki/web-api-demo.git</a></p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>前端jenkin教程</title>
+    <meta name="description" content="安装
+
+拉取jenkins镜像
+
+docker pull jenkins/jenkins:latest
+
+
+构建并运行jenkins容器
+
+docker run --name jenkins -p 8">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        前端jenkin教程
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_折腾的前端.html">折腾的前端</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:16:14
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h2>安装</h2>
+<ol>
+<li>拉取jenkins镜像</li>
+</ol>
+<pre><code class="language-shell">docker pull jenkins/jenkins:latest
+</code></pre>
+<ol start="2">
+<li>构建并运行jenkins容器</li>
+</ol>
+<pre><code class="language-shell">docker run --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -d jenkins/jenkins:latest
+</code></pre>
+<h2>验证、注册、登录</h2>
+<ol>
+<li><p>访问jenkins</p>
+<p> 打开浏览器，输入网址http://&lt;宿主机IP&gt;:8080，回车即可看到如下页面：</p>
+</li>
+<li><p>验证jenkins初始密码
+ 打开服务器终端，进入jenkins容器</p>
+<pre><code class="language-shell">docker exec -it jenkins /bin/bash
+</code></pre>
+<p> 查看jenkins的root密码</p>
+<pre><code class="language-shell">cat /etc/...
+</code></pre>
+<p> 将输出的密码填到浏览器的输入框中点击确定即可</p>
+</li>
+<li><p>安装插件</p>
+<p> 安装推荐的插件即可，等待片刻即可进入jenkins面板</p>
+</li>
+<li><p>注册</p>
+<p> 按提示注册即可</p>
+</li>
+<li><p>登录</p>
+</li>
+</ol>
+<h2>安装nodejs、publish over ssh 插件</h2>
+<ol>
+<li><p>安装
+进入jenkins Manager，
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/vZF0me2jpyPwr7-3Iw_c62gH.png" alt="">
+找到这两个插件进行安装
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/w_iAFiTau6hbSuDFHZPfsKAb.png" alt="">
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/-mazzK-k8gQQsIalioaFDXRh.png" alt=""></p>
+</li>
+<li><p>配置ssh
+进入系统配置
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/gZAVhQI-FQOde7cdr8TFOB4h.png" alt="">
+找到Publish over SSH，可以使用ctrl+F 搜索一下，
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/p5jfe46ene1qWeZ9qsjMoslQ.png" alt="">
+填写名称，网站服务器ip（我这边使用的是宿主机ip），用户名，远程文件夹（基础目录）。然后点开高级，选中密码认证，修改密码（ssh的密码）即可。</p>
+</li>
+<li><p>配置nodejs
+进入“全局工具配置”，找到NodeJS 安装，点击“新增nodejs”，输入“别名”，选中“自动安装”，选择nodejs版本即可。
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/Z1p4eKqj26g5TR3_nQiIrQkT.png" alt=""></p>
+</li>
+</ol>
+<h2>创建一个普通项目</h2>
+<p>点击“新建任务”，选中“构建一个自由风格的项目”，输入项目名称，点击“确定”按钮即可。
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/x_qrv6txzdma-wbCZ8f05E3-.png" alt=""></p>
+<h2>配置项目</h2>
+<ol>
+<li>找到源码管理，输入存储库的url，我这边是gitee的
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/9McROYSitbOA5w2mgl6MTPcc.png" alt=""></li>
+<li>添加Credential（git仓库的身份认证）
+我这边使用的是用户名+密码，类型选中username with password
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/ZZBQddU8EQCblmesyaXZ3OAn.png" alt=""></li>
+<li>找到“构建环境”
+选中“provide Nodejs...”,选择之前安装的nodejs版本
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/_X5paW-oMgVMedQ8Yv5eDxh2.png" alt=""></li>
+<li>“构建步骤”依次添加“执行shell”和“send files or execute commands over ssh”
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/jA5VNqpGNPU1xESuno1iSU_N.png" alt=""></li>
+<li>在“执行shell”中添加项目构建步骤，比如：
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/w1mdW39vWPU7mFj1Pf8xWsSk.png" alt=""></li>
+<li>在“send files or execute commands over ssh”中
+选择之前配置的ssh服务器，输入构建产物路径，“Remove prefix”可删除dist文件夹，“Remote directory”是文件将上传到的目标远程文件夹名称</li>
+</ol>
+<p>全部配置完成点击应用和保存</p>
+<h2>构建</h2>
+<p>点击“立即构建”</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

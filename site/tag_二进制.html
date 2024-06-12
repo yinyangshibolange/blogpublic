@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>内容标签</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- <link rel="stylesheet" href="css/checkbix.min.css">
+    <script src="js/checkbix.min.js"></script> -->
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    
+</head>
+
+<body><div id="app">
+<div id="container" class="container">
+    
+    <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+    
+
+    <div class="container-content">
+        <div class="mb-10px ml-35px">
+            <a href="/site/tags.html">标签云</a>  /  <span>二进制</span>
+        </div>
+
+        
+ <div class="list">
+     
+         <a class="item" href="/site/detail_61db31ec-6950-4940-940b-95e09e01d29c.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/9FF8tAa5tI492e01Y16LciPz.jpeg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        开发票算法
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    ps: 可以做个小程序
+最近开发票，为了凑一个数，要大于开票额度，但是又不能超出太多（生活拮据，精打细算），所以想出要不弄个算法来实现，一个个加是在太费时间
+如何在一个数组找出随即个数的数字之和大于某
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:36
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+ </div>
+
+
+    </div>
+</div>
+
+
+<script>
+</script>
+</div></body>
+
+</html>

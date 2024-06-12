@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>利用python实现url转pdf</title>
+    <meta name="description" content="转换url为pdf
+第一步：安装依赖和软件
+需要用到两个东西，一个pdfkit 的 python 依赖，另一个是名为wkhtmltopdf的软件，
+安装步骤
+
+pdfkit安装，直接在命令行中执行pi">
+    <meta name="keywords" content="pdf,python">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        利用python实现url转pdf
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_python.html">python</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:15:50
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h1>转换url为pdf</h1>
+<h2>第一步：安装依赖和软件</h2>
+<p>需要用到两个东西，一个pdfkit 的 python 依赖，另一个是名为wkhtmltopdf的软件，</p>
+<h3>安装步骤</h3>
+<ol>
+<li>pdfkit安装，直接在命令行中执行pip install pdfkit即可</li>
+<li>wkhtmltopdf安装：需要前往wkhtmltopdf官方下载网站<a href="https://wkhtmltopdf.org/downloads.html">https://wkhtmltopdf.org/downloads.html</a>
+然后根据你的系统下载对应的软件，我的是windows系统，所以下载的是后缀名是.exe的软件，</li>
+</ol>
+<p>ps：我感觉这个软件比一些脚本/依赖好用很多，而且这个软件有mac版本，windows版本，linux版本，所以这个软件用于生产环境都可以，不过这种软件一般产生一定的内存消耗，一定要考虑服务器性能酌情使用</p>
+<h2>第二步编写python脚本</h2>
+<ol>
+<li>导入pdfkit</li>
+</ol>
+<pre><code class="language-python">import pdfkit
+</code></pre>
+<ol start="2">
+<li>编写执行函数</li>
+</ol>
+<pre><code class="language-python">def url_to_pdf(url, to_file):
+    # 将wkhtmltopdf.exe程序绝对路径传入config对象
+    path_wkthmltopdf = r&#39;C:Program Fileswkhtmltopdfinwkhtmltopdf.exe&#39;
+    config = pdfkit.configuration(wkhtmltopdf=path_wkthmltopdf)
+    # 生成pdf文件，to_file为文件路径
+    pdfkit.from_url(url, to_file, configuration=config)
+    print(&#39;完成&#39;)
+</code></pre>
+<ol start="3">
+<li>执行函数</li>
+</ol>
+<pre><code class="language-python">url_to_pdf(r&#39;https://zhuanlan.zhihu.com/p/69869004&#39;, &#39;out_1.pdf&#39;)
+</code></pre>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                            <a class="tag-item" href="/site/tag_pdf.html">#pdf</a>
+                            
+                                
+                        
+                            <a class="tag-item" href="/site/tag_python.html">#python</a>
+                            
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

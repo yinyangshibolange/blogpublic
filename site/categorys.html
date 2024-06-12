@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+ <meta charset="utf-8">
+ <title>所有分类</title>
+ <link rel="shortcut icon" href="/favicon.ico">
+ <!-- <link rel="stylesheet" href="css/checkbix.min.css">
+    <script src="js/checkbix.min.js"></script> -->
+ <link rel="stylesheet" href="/css/modules/preview.css">
+ <link rel="stylesheet" href="/css/modules/categorys.css">
+ 
+ 
+</head>
+
+<body><div id="app">
+ <div id="container" class="container">
+  <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+   <div class="container-content">
+
+    <h2>所有分类</h2>
+
+    <ul class="category-ul">
+
+     
+      <li>
+       <a href="/site/type_js库.html">js库</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_mdn.html">mdn</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_nuxt3.html">nuxt3</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_python.html">python</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_vue教程.html">vue教程</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_折腾的全栈.html">折腾的全栈</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_折腾的前端.html">折腾的前端</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_折腾的技术.html">折腾的技术</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_折腾的生活.html">折腾的生活</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_折腾的电脑.html">折腾的电脑</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_折腾的网络.html">折腾的网络</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_网络拓扑.html">网络拓扑</a>
+      </li>
+      
+      <li>
+       <a href="/site/type_软件推荐.html">软件推荐</a>
+      </li>
+      
+    </ul>
+
+   </div>
+ </div>
+
+
+ <script>
+ </script>
+</div></body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>Beacon</title>
+    <meta name="description" content="Beacon
+这个api可以让在页面关闭时，发送一个请求到服务器，由于传统的xhr请求不可靠，不能保证发送成功，所以诞生了这个api，这在某些特殊场景下将会比较实用
+食用方法如下：
+navigator">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        Beacon
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_mdn.html">mdn</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:15:18
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h1>Beacon</h1>
+<p>这个api可以让在页面关闭时，发送一个请求到服务器，由于传统的xhr请求不可靠，不能保证发送成功，所以诞生了这个api，这在某些特殊场景下将会比较实用</p>
+<p>食用方法如下：</p>
+<pre><code class="language-javascript">navigator.sendBeacon(url);
+navigator.sendBeacon(url, data);
+</code></pre>
+<p><code>data</code> 可以是 ArrayBuffer、ArrayBufferView、Blob、DOMString、FormData或 URLSearchParams 类型的数据，数据是通过post请求发送的</p>
+<p>注意这个api不能再unload和beforeUnload中使用，因为这两个api在缓存页面关闭时并不会触发，只有当缓存也销毁的时候才会触发，具体查看bfcache机制，比如在页面前进时，当前页面未销毁，而是缓存下来的时候，就不会触发这两个api。</p>
+<p>所以还是要看onpagehide和visibilitychange这两个api，而visibilitychange</p>
+<ul>
+<li>visibilitychange当页面隐藏和显示时触发，且当 visibleStateState 属性的值转换为 hidden 时，Safari 不会按预期触发 visibilitychange。</li>
+<li>onpagehide当页面隐藏和显示时不触发，在当前页面离开前往其他页面的时候触发，且有一个persisted参数，表示是否从缓存中获取的</li>
+</ul>
+<p>html demo可以到我的gitee仓库下获取
+&lt;<a href="https://gitee.com/mrhki/web-api-demo.git">https://gitee.com/mrhki/web-api-demo.git</a>&gt;
+需要打开server下的koa服务器，再打开Beacon demo运行anywhere</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

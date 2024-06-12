@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>开发票算法</title>
+    <meta name="description" content="ps: 可以做个小程序
+最近开发票，为了凑一个数，要大于开票额度，但是又不能超出太多（生活拮据，精打细算），所以想出要不弄个算法来实现，一个个加是在太费时间
+如何在一个数组找出随即个数的数字之和大于某">
+    <meta name="keywords" content="二进制">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        开发票算法
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_折腾的技术.html">折腾的技术</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:16:36
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h2>ps: 可以做个小程序</h2>
+<h2>最近开发票，为了凑一个数，要大于开票额度，但是又不能超出太多（生活拮据，精打细算），所以想出要不弄个算法来实现，一个个加是在太费时间</h2>
+<h2>如何在一个数组找出随即个数的数字之和大于某个数，但是最接近这个数，例如在数组[308,311,350,200,400,315,288,375,52,340,339,36.84,337,49,360,358,336]中找出大于1800并且最接近1800的数</h2>
+<h2>利用二进制</h2>
+<h3>这个数组中一共17个数，所以要遍历2^17次 算法复杂度为O(2^n*n)</h3>
+<pre><code class="language-javascript">const nums = [308, 311, 350, 200, 400, 315, 288, 375, 52, 340, 339, 36.84, 337, 49, 360, 358, 336]
+
+const _nums_len = nums.length
+const len = Math.pow(2, _nums_len)
+
+function strToLen (str, len) {
+ const _len = str.length
+ if (_len &lt; len) {
+  return &#39;0&#39;.repeat(len - _len) + str
+ } else {
+  return str.slice(0, len)
+ }
+}
+
+let min = 18000, minArr = []
+for (let i = 0; i &lt; len; i++) {
+ const _num = strToLen(i.toString(2), _nums_len)
+
+ let sum = 0, _tempArr = []
+ _num.split(&#39;&#39;).forEach((item, index) =&gt; {
+  if (item === &#39;1&#39;) {
+   sum+= nums[index]
+   _tempArr = [..._tempArr, nums[index]]
+  }
+ })
+ if(sum &gt; 1800 &amp;&amp; sum &lt; min) {
+  min = sum
+  minArr = _tempArr
+ }
+}
+
+console.log(min) 
+console.log(minArr.join(&#39;,&#39;))
+</code></pre>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                            <a class="tag-item" href="/site/tag_二进制.html">#二进制</a>
+                            
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

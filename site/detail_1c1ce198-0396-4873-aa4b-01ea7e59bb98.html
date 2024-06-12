@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>PowerToys</title>
+    <meta name="description" content="PowerToys
+这个微软的官方软件地址是https://learn.microsoft.com/zh-cn/windows/powertoys/
+这个软件具有许多实用小工具，能帮助我们更好更方便地">
+    <meta name="keywords" content="软件,powertoys">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        PowerToys
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_软件推荐.html">软件推荐</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:17:08
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h1>PowerToys</h1>
+<p>这个微软的官方软件地址是<a href="https://learn.microsoft.com/zh-cn/windows/powertoys/">https://learn.microsoft.com/zh-cn/windows/powertoys/</a>
+这个软件具有许多实用小工具，能帮助我们更好更方便地使用windows系统</p>
+<p>以我目前的v0.68.1版本为例</p>
+<ol>
+<li>始终置顶
+顾名思义，那么就是将一个窗口始终固定在最前面</li>
+<li>唤醒
+快速设置电源计划</li>
+<li>颜色选择器
+屏幕选点颜色选择器，支持13种颜色格式</li>
+<li>FancyZone
+微软界面布局，可以实现快速设置布局</li>
+<li>File LockSmith
+文件锁定进程查询，如果遇到文件删除不掉的情况，就可以使用这个插件查询文件在哪个进程中被使用，然后结束进程，就可以正常删除文件了。</li>
+<li>文件资源管理器加载项
+可以设置在文件资源管理器中可以预览哪些文件</li>
+<li>Hosts File Editor
+可以可视化修改host文件，不需要再去找到host文件再进行修改了</li>
+<li>图像大小调整器
+可以快速调整图像大小</li>
+<li>键盘管理器
+可以设置键盘的自定义映射，可以把你不经常使用的按键映射成其他按键或者是组合键</li>
+<li>鼠标实用工具</li>
+</ol>
+<ul>
+<li>双击ctrl会出现一个舞台灯光聚焦的效果，跟随你的鼠标的移动</li>
+<li>鼠标荧光笔，用组合键激活荧光笔之后，点击鼠标的时候会在鼠标的位置出现一个黄色区域</li>
+</ul>
+<ol start="11">
+<li>黏贴为纯文本
+激活之后，黏贴内容将不再带上原来的格式</li>
+<li>powerRename
+可以实现文件批量重命名，可以按正则表达式设置</li>
+<li>powerToys Run
+应用快速启动
+<img src="http://rqisd4yi1.hd-bkt.clouddn.com/20230322143437.png" alt="image.png"></li>
+<li>quick Accent</li>
+</ol>
+<ul>
+<li>重音输入áàäâăåαāąȧãæ</li>
+<li>食用方法
+启用quick Accent，同时按长按a+左键，左右选择重音符</li>
+</ul>
+<ol start="15">
+<li>屏幕标尺
+测量屏幕长宽</li>
+<li>快捷键指南
+按快捷组合键弹出快捷键指南对话框</li>
+</ol>
+<img src="http://rqisd4yi1.hd-bkt.clouddn.com/20230322144603.png" width="900px" alt="图片" align="center">
+
+<ol start="17">
+<li>文本提取器
+按快捷键框选内容，直接提取框选中的文字信息</li>
+<li>视频会议静音
+可以快捷设置静音</li>
+</ol>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                            <a class="tag-item" href="/site/tag_软件.html">#软件</a>
+                            
+                                
+                        
+                            <a class="tag-item" href="/site/tag_powertoys.html">#powertoys</a>
+                            
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

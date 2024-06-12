@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>首页</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- <link rel="stylesheet" href="css/checkbix.min.css">
+    <script src="js/checkbix.min.js"></script> -->
+    <link rel="stylesheet" href="/css/modules/preview.css">
+
+    
+</head>
+
+<body><div id="app">
+<div id="container" class="container">
+    <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+    <div class="container-content">
+        
+ <div class="list">
+     
+         <a class="item" href="/site/detail_f0e80ba8-9d37-42a1-94ac-452b89d93fa2.html">
+             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/HTq_vt__wT26YN7eN3Kp7C3D.jpeg" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        前端jenkin教程
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    安装
+
+拉取jenkins镜像
+
+docker pull jenkins/jenkins:latest
+
+
+构建并运行jenkins容器
+
+docker run --name jenkins -p 8
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:14
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_511821e3-0e76-4c9b-81a8-13545eff4b36.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        轻松实现IPV6访问家里的设备服务
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    现今，由于公网ipv4地址的枯竭，获取公网ipv4变得越来越难，想要远程访问家里的设备也因此变得困难，但是ipv6的获取却相对简单很多，现在的运营商都支持IPV6，所以只要家里的路由器设备支持IPV6
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:50
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_5220367c-74ab-4d58-b9af-74dbc8cbf205.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        轻松实现IPV4假访问IPV6服务
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    cloudflare中文网址：https://www.cloudflare-cn.com/
+创建Cloudflare站点
+点击创建站点，选择免费计划，输入要使用的站点域名，注意如果你的站点域名不是在c
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:55
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_39587a05-5853-449b-809c-fc78495b5a33.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        分享下我的nas配置
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    硬件
+
+主板： 100 h110 主板一个 wifi 插槽一个 ngff sata ，2 个 sata3.0，还有个空的 sata 1 个 pcie3.0×1， 一个空的显卡槽，主要是自带 dc 供电
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:43
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_478263f6-39ce-41bc-ba42-ef4cdee2fea5.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        轻松实现远程“局域网”
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    zerotier
+zerotier是一个多系统的软件终端，可以用来搭建远程“局域网”，只要两个设备同时安装zerotier并加入了同一个“网络”，那么这两个设备就可以互相访问。
+为什么选择zeroti
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:17:00
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_7a6844c3-af53-49d7-9fe7-2bd2132469ea.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        浅谈NUXT
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    
+
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:15:44
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_4e617f41-4fe2-44b3-87c3-df1a24958ed4.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        实现一个简单的提醒打卡的小应用
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    由于我上班打卡老是忘记，还有就是每周都要上传周报，所以我做了这么一个提醒以及记录工作的小应用。
+
+主要功能
+
+提醒打卡
+早上上班记录今天的工作计划
+晚上下班后记录今天的工作内容
+查看历史工作记录
+自动
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:24
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_86c8dff9-3eb5-4751-9e6b-489362f80c3e.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        浅谈MIME-TYPE
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    众所周知，HTTP的请求报文是由请求行（METHOD URL HTTP-Version 回车）+ 请求头 + 空行 + 请求体构成，响应报文是由响应行 + 响应头 + 空行 + 响应体构成, 那么如何
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:30
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_fba9d77c-f1e4-4c4d-a945-8b3511e9d44a.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        快速集成一个评论系统
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    LeanCloud
+LeanCloud是一个云服务，提供云存储、推送、短信、内建账户等服务，提供免费的开发版。
+Valine
+基于LeanCloud开发的评论插件
+
+先注册LeanCloud，地址 h
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:03
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+ </div>
+
+
+        
+<div class="doc_page">
+ 
+<ul class="">
+ <li>
+  <a href="/index_1.html">&lt;</a>
+ </li>
+ 
+ <li class="">
+   <a class="" href="/index_1.html">1</a>
+ </li>
+ 
+ <li class="">
+   <a class="active" href="/index_2.html">2</a>
+ </li>
+ 
+ 
+ <li>
+  <a href="/index_2.html">&gt;</a>
+ </li>
+</ul>
+</div>
+    </div>
+
+
+</div>
+
+
+<script>
+</script>
+</div></body>
+
+</html>

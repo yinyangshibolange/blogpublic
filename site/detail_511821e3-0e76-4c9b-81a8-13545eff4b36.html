@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>轻松实现IPV6访问家里的设备服务</title>
+    <meta name="description" content="现今，由于公网ipv4地址的枯竭，获取公网ipv4变得越来越难，想要远程访问家里的设备也因此变得困难，但是ipv6的获取却相对简单很多，现在的运营商都支持IPV6，所以只要家里的路由器设备支持IPV6">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        轻松实现IPV6访问家里的设备服务
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_折腾的网络.html">折腾的网络</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:16:50
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <p>现今，由于公网ipv4地址的枯竭，获取公网ipv4变得越来越难，想要远程访问家里的设备也因此变得困难，但是ipv6的获取却相对简单很多，现在的运营商都支持IPV6，所以只要家里的路由器设备支持IPV6，那么就可以轻松实现IPV6连接。</p>
+<h2>开启光猫的IPV4/IPV6双栈，或者修改光猫路由模式为桥接</h2>
+<p>登录光猫面板，进入网络配置，修改为IPV4/IPV6模式，这个方式比较简单，而设置为桥接模式则相对复杂，因为光猫默认不支持修改（我的不支持，不知道是不是都不支持），需要进入管理员模式才行。</p>
+<h2>启用路由器的IPV6</h2>
+<p>将路由器的IPV6功能打开即可，如果路由器不支持IPV6，那就停吧，或者去买个支持IPV6的，你的路由器太老了</p>
+<h2>打开设备的IPV6功能</h2>
+<h3>windows</h3>
+<p>默认开启的，打开对应网络的“Internet协议版本6”即可
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/Fti2lQaE6dSNOWuAJhcMFB51.png" alt=""></p>
+<h3>群晖</h3>
+<p>打开“控制面板”-“网络”-“网络界面”，编辑对应网络，将IPV6设置为自动，即可</p>
+<h3>linux</h3>
+<p>不同系统可能有所不同，请自行尝试</p>
+<h2>ddns</h2>
+<h3>安装ddns-go</h3>
+<ol>
+<li>拉取镜像</li>
+</ol>
+<pre><code class="language-shell">docker pull jeessy/ddns-go:latest
+</code></pre>
+<ol start="2">
+<li>运行容器</li>
+</ol>
+<pre><code class="language-shell">docker run -d --name ddns-go --restart=always --net=host -v /opt/ddns-go:/root jeessy/ddns-go
+</code></pre>
+<p>注意网络模式必须是host，不然获取不到宿主机的ipv6地址
+3. 配置
+输入 IP:PORT 进入管理面板，配置对应服务商和认证方式
+<img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/gKed4nOrsoxt_Znwf5AXtS2e.png" alt="">
+我这边是阿里云的dns解析</p>
+<p>然后关闭IPV4解析，启用IPV6解析，选择获取IP的方式，输入domains，就是解析记录，比如*.xxxxx.com，xxxxx.com。</p>
+<p>“其他”可以设置这个管理面板的账号密码，下次进入管理面板的话需要验证账号密码。</p>
+<h2>通过IPV6访问</h2>
+<p>现在可以通过域名访问设备上的服务了，不过访问的客户端需要也支持IPV6才行，通过IPV4直接访问是访问不通的。可以尝试用cloudflare来代理IPV6，这样还可以增强访问的安全度，不过cloudflare的代理只支持HTTP和HTTPS，比较适合网站建设。</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>内容分类</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- <link rel="stylesheet" href="css/checkbix.min.css">
+    <script src="js/checkbix.min.js"></script> -->
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    
+</head>
+
+<body><div id="app">
+<div id="container" class="container">
+    
+    <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+    <div class="container-content">
+        <div class="mb-10px ml-35px">
+           <a href="/site/categorys.html">全部分类</a> / <span>折腾的网络</span>
+        </div>
+        
+ <div class="list">
+     
+         <a class="item" href="/site/detail_511821e3-0e76-4c9b-81a8-13545eff4b36.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        轻松实现IPV6访问家里的设备服务
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    现今，由于公网ipv4地址的枯竭，获取公网ipv4变得越来越难，想要远程访问家里的设备也因此变得困难，但是ipv6的获取却相对简单很多，现在的运营商都支持IPV6，所以只要家里的路由器设备支持IPV6
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:50
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_5220367c-74ab-4d58-b9af-74dbc8cbf205.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        轻松实现IPV4假访问IPV6服务
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    cloudflare中文网址：https://www.cloudflare-cn.com/
+创建Cloudflare站点
+点击创建站点，选择免费计划，输入要使用的站点域名，注意如果你的站点域名不是在c
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:16:55
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+         <a class="item" href="/site/detail_478263f6-39ce-41bc-ba42-ef4cdee2fea5.html">
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title">
+                        轻松实现远程“局域网”
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    zerotier
+zerotier是一个多系统的软件终端，可以用来搭建远程“局域网”，只要两个设备同时安装zerotier并加入了同一个“网络”，那么这两个设备就可以互相访问。
+为什么选择zeroti
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-11 16:17:00
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+ </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+</script>
+</div></body>
+
+</html>

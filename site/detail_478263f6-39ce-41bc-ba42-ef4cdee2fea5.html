@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>轻松实现远程“局域网”</title>
+    <meta name="description" content="zerotier
+zerotier是一个多系统的软件终端，可以用来搭建远程“局域网”，只要两个设备同时安装zerotier并加入了同一个“网络”，那么这两个设备就可以互相访问。
+为什么选择zeroti">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <a class="head-info" href="/index.html">
+        <!-- <img src="" alt="" class="header-banner"> -->
+        <div class="header-title color-333">张爱上了hong</div>
+        <div class="header-desp color-999">🐺爱上了🐑</div>
+    </a>
+    <ul id="menusUl" class="menus-ul">
+        <li>
+            <a href="/index.html">首页</a>
+        </li>
+
+        
+            <li>
+                <a href="/site/categorys.html">所有分类</a>
+            </li>
+            
+            <li>
+                <a href="/site/tags.html">标签云</a>
+            </li>
+            
+            <li>
+                <a href="/site/about.html">关于</a>
+            </li>
+            
+
+                <script>
+                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                        if($(el).attr("href") === window.location.pathname) {
+                            $(el).addClass("active")
+                        }
+                    })
+                </script>
+    </ul>
+</div>
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        轻松实现远程“局域网”
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type"><!--分类-->
+                        分类：<a href="/site/type_折腾的网络.html">折腾的网络</a>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-06-11 16:17:00
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h2>zerotier</h2>
+<p>zerotier是一个多系统的软件终端，可以用来搭建远程“局域网”，只要两个设备同时安装zerotier并加入了同一个“网络”，那么这两个设备就可以互相访问。</p>
+<h2>为什么选择zerotier而不是内网穿透（蒲公英等）或frp</h2>
+<ol>
+<li>内网穿透的话免费的速度太慢，而速度快的又太贵</li>
+<li>frp需要有公网ip的服务器（其实zerotier也需要公网ip的服务器，不过zerotier默认提供，且具有较大带宽）</li>
+</ol>
+<h2>安装</h2>
+<h3>windows</h3>
+<p>只要下载msi安装安装即可</p>
+<h3>linux</h3>
+<p>运行一下代码即可</p>
+<pre><code class="language-shell">curl -s https://install.zerotier.com | sudo bash
+</code></pre>
+<h3>群晖</h3>
+<p>使用矿神第三方套件安装，注意这个套件需要修复才能使用，使用教程在套件详情的链接中</p>
+<h2>创建“局域网”</h2>
+<p>首先需要注册登录zerotier官网，然后点击Create A Network 按钮，即可创建“局域网”</p>
+<h2>加入“局域网”</h2>
+<h3>windows</h3>
+<p>运行zerotier, 右键zerotier托盘，点击join network，输入network id ，点击join即可。</p>
+<h3>linux</h3>
+<pre><code class="language-shell">zerotier-cli join yournetworkId
+</code></pre>
+<h3>群晖</h3>
+<p>同linux</p>
+<h2>激活ip</h2>
+<p>加入完的设备还没有分配ip，需要进入zerotier官网的网络面板下的“members”面板，可以看到加入的设备，选中左边的多选框即可，name和Description选填（用来区分设备），然后Managed IPs中的ip就是设备对应的ip，之后访问这个ip即可。</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                                
+                </div>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+                // showMessage('1', '复制成功')
+                // console.log('copy successed!' )
+                // console.dir($(event.target))
+                // console.log($(event.target).text())
+                // $(event.target).text("copy successed!")
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).append($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>
