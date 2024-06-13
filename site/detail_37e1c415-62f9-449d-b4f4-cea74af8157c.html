@@ -111,16 +111,16 @@ function hideMenu() {
                             作者：hongyu
                         </div>
                         <div class="publish_time "><!--发布时间-->
-                            2024-06-13 09:53:29
+                            2024-06-13 16:23:26
                         </div>
                     </div>
                 </div>
 
                 <div class="preview-content markdown-body">
-                    <h3>前端技术：</h3>
-<h4>html 部分：</h4>
-<p>1、块级元素和行内元素有哪些，块级元素和行内元素的区别</p>
-<p>块级元素</p>
+                    <h2>前端技术：</h2>
+<h3>html 部分：</h3>
+<h4>1、块级元素和行内元素有哪些，块级元素和行内元素的区别</h4>
+<h5>块级元素</h5>
 <p>1)块级元素可以独占一行。</p>
 <p>2)块级元素的默认宽度为 100%，默认高度由子元素或者内容决定。</p>
 <p>3)块级元素的可以设置宽高，内外边距。</p>
@@ -131,7 +131,7 @@ function hideMenu() {
 <p>3)行内元素不能为其设置宽高，垂直方向的内外边距。（设置了浮动的行内元素可以设置宽高和水平方向上的内外边距）</p>
 <p>4)行内元素不能嵌套块级元素。</p>
 <p>还有一些比较特别的元素叫行内块元素， 兼具行内元素和块级元素的特点，可以设置宽高，在一行内显示，没有默认宽度如 img、input、select、textarea、button 等。</p>
-<h4>行内元素</h4>
+<h5>行内元素</h5>
 <table>
 <thead>
 <tr>
@@ -393,18 +393,26 @@ function hideMenu() {
 <td>定义表格中的行</td>
 </tr>
 </tbody></table>
-<p>2、input 表单控件的 value 和 placeholder 属性有什么区别</p>
-<p>3、H5 的本地存储有哪些，有何区别</p>
+<h4>2、input 表单控件的 value 和 placeholder 属性有什么区别</h4>
+<h4>3、H5 的本地存储有哪些，有何区别</h4>
 <p>sessionStorage 生命周期为当前窗口或标签页</p>
-<p>4、同源策略是什么</p>
+<h4>4、同源策略是什么</h4>
 <p>协议+域名+端口不相同，则浏览器会爆出异常</p>
-<p>-          同源策略，它是由 Netscape 提出的一个著名的安全策略。</p>
-<p>-          当一个浏览器的两个 tab 页中分别打开来 百度和谷歌的页面</p>
-<p>-          当浏览器的百度 tab 页执行一个脚本的时候会检查这个脚本是属于哪个页面的，</p>
-<p>-          即检查是否同源，只有和百度同源的脚本才会被执行。 [1]</p>
-<p>-          如果非同源，那么在请求数据时，浏览器会在控制台中报一个异常，提示拒绝访问。</p>
-<p>-          同源策略是浏览器的行为，是为了保护本地数据不被 JavaScript 代码获取回来的数据污染，因此拦截的是客户端发出的请求回来的数据接收，即请求发送了，服务器响应了，但是无法被浏览器接收。</p>
-<p>5、跨域是什么？如何解决跨域问题</p>
+<ul>
+<li><p>同源策略，它是由 Netscape 提出的一个著名的安全策略。</p>
+</li>
+<li><p>当一个浏览器的两个 tab 页中分别打开来 百度和谷歌的页面</p>
+</li>
+<li><p>当浏览器的百度 tab 页执行一个脚本的时候会检查这个脚本是属于哪个页面的，</p>
+</li>
+<li><p>即检查是否同源，只有和百度同源的脚本才会被执行。 [1]</p>
+</li>
+<li><p>如果非同源，那么在请求数据时，浏览器会在控制台中报一个异常，提示拒绝访问。</p>
+</li>
+<li><p>同源策略是浏览器的行为，是为了保护本地数据不被 JavaScript 代码获取回来的数据污染，因此拦截的是客户端发出的请求回来的数据接收，即请求发送了，服务器响应了，但是无法被浏览器接收。</p>
+</li>
+</ul>
+<h4>5、跨域是什么？如何解决跨域问题</h4>
 <p>JSONP</p>
 <p>JSONP 是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，兼容性好（兼容低版本 IE），缺点是只支持 get 请求，不支持 post 请求。</p>
 <p>核心思想：网页通过添加一个 script 元素，向服务器请求 JSON 数据，服务器收到请求后，将数据放在一个指定名字的回调函数的参数位置传回来。</p>
@@ -417,18 +425,18 @@ function hideMenu() {
 <p>nginx 代理跨域</p>
 <p>ginx 模拟一个虚拟服务器，因为服务器与服务器之间是不存在跨域的。</p>
 <p>发送数据时 ，客户端-|nginx-|服务端；返回数据时，服务端-|nginx-|客户端。</p>
-<p>6、怎么判断图片是否加载完成</p>
-<h4>Css 部分</h4>
-<p>1、布局方式</p>
+<h4>6、怎么判断图片是否加载完成</h4>
+<h3>Css 部分</h3>
+<h4>1、布局方式</h4>
 <p>流式布局 一个一个往下排</p>
 <p>自适应布局 适应窗口大小变化大小，百分数，flex</p>
 <p>响应式布局 响应窗口的大小进行动态布局，媒体查询</p>
 <p>弹性布局 flex，常用 css 属性</p>
-<p>2、盒子模型 从外到内 content+padding+border+margin</p>
-<p>3、如何放入一张与原图相同长宽比以及不被裁剪的图片 img</p>
-<p>4、如何将一个不知长宽的 div 用 absolute 方式进行居中</p>
-<p>5、Css 框架有哪些</p>
-<p>6、伪类和伪元素</p>
+<h4>2、盒子模型 从外到内 content+padding+border+margin</h4>
+<h4>3、如何放入一张与原图相同长宽比以及不被裁剪的图片 img</h4>
+<h4>4、如何将一个不知长宽的 div 用 absolute 方式进行居中</h4>
+<h4>5、Css 框架有哪些</h4>
+<h4>6、伪类和伪元素</h4>
 <p>伪类</p>
 <p>a:link{background-color:pink;}/品红，未访问/</p>
 <p>a:visited{color:orange;}/字体颜色为橙色，已被访问/</p>
@@ -449,81 +457,96 @@ function hideMenu() {
 <p>::backdrop 匹配全屏模式下的背景</p>
 <p>::slotted() 用于选定那些被放在 HTML 模板 中的元素</p>
 <p>::inactive-selection 选取非活动状态时文档中高亮(反白)的部分</p>
-<p>7、什么是 CSS Sprite（“精灵图”）</p>
+<h4>7、什么是 CSS Sprite（“精灵图”）</h4>
 <p>CSS Sprites 叫 CSS 精灵或者雪碧图，是一种网页图片应用处理方式。</p>
 <p>CSS Sprites 其实就是把网页中一些背景图片整合到一张图片文件中。</p>
 <p>再利用 CSS 的&quot;background-image&quot;，“background-repeat”，&quot;background-position&quot;的组合进行背景定位，background-position 可以用数字精确的定位出背景图片的位置。</p>
-<p>7、使用 CSS Sprite 有什么好处</p>
-<p>8、清除浮动常用方式</p>
+<h4>8、使用 CSS Sprite 有什么好处</h4>
+<h4>9、清除浮动常用方式</h4>
 <p>Overflow:hidden;和::after 伪元素 clear:both</p>
-<p>9、怎么写弹性布局</p>
-<p>10、Css 预处理器有哪些</p>
+<h4>10、怎么写弹性布局</h4>
+<h4>11、Css 预处理器有哪些</h4>
 <p>Stylus,less,sass</p>
-<h4>Js 部分：</h4>
-<p>1、事件冒泡的各个阶段</p>
+<h3>Js 部分：</h3>
+<h4>1、事件冒泡的各个阶段</h4>
 <p>从上往下捕获阶段（如何捕获） ---| 2：找到目标阶段 ---| 3：从下网上冒泡阶段（如何冒泡）</p>
-<p>2、数据类型</p>
+<h4>2、数据类型</h4>
 <p>五种基本类型: Undefined、Null、Boolean、Number 和 String。</p>
 <p>一种引用数据类型：object</p>
 <p>在引用数据类型 object 中包括 function/array/object</p>
 <p>ES6 新增：Symbol，主要用于创建一个独一无二的标识。</p>
 <p>ES10 新增：Bigint，解决 js 中精度问题</p>
-<p>2、数组去重？</p>
-<p>3、数组拉平函数</p>
-<p>4、判断变量是否是数组</p>
-<p>5、this 指向最后一次调用这个方法的对象</p>
-<p>6、如何改变 this 指向，call、apply、bind</p>
+<h4>3、数组去重？</h4>
+<h4>4、数组拉平函数</h4>
+<h4>5、判断变量是否是数组</h4>
+<h4>6、this 指向最后一次调用这个方法的对象</h4>
+<h4>7、如何改变 this 指向，call、apply、bind</h4>
 <p>-          call 经常做继承 call 写多个参数</p>
 <p>-          apply 经常和数组有关，比如实现数组中的最大值，最小值等 apply 传数组</p>
 <p>-          bind 不调用函数，但是还是想改变 this 指向，比如改变定时器内部的 this 指向。</p>
-<p>7、浅拷贝和深拷贝，如何实现深拷贝</p>
-<p>8、let const 区别</p>
-<p>9、Es6 模块化的导入导出方式</p>
-<p>10、.判断数据类型的方法</p>
+<h4>8、浅拷贝和深拷贝，如何实现深拷贝</h4>
+<h4>9、let const 区别</h4>
+<h4>10、Es6 模块化的导入导出方式</h4>
+<h4>11、.判断数据类型的方法</h4>
 <p>typeof：无法判断 null，是 obj 类型，而且只能判断出是引用类型</p>
 <p>instanceof：</p>
 <p>constructor：null 和 undefined 是无效的对象，因此是不会有 constructor 存在的，这两种类型的数据需要通过 typeof 来判断。</p>
 <p>Object.prototype.toString ：Object.prototype.toString.call(undefined) ;</p>
-<p>11、防抖和节流是什么</p>
-<p>12、js 的异步编程模式有哪些</p>
-<p>-          回调函数</p>
-<p>-          Promise</p>
-<p>-          Async/await</p>
-<p>-          发布/订阅模式</p>
-<p>-          Generator</p>
-<h4>Vue 部分：</h4>
-<p>2、Create 和 mounted 区别，</p>
+<h4>12、防抖和节流是什么</h4>
+<h4>13、js 的异步编程模式有哪些</h4>
+<ul>
+<li><p>回调函数</p>
+</li>
+<li><p>Promise</p>
+</li>
+<li><p>Async/await</p>
+</li>
+<li><p>发布/订阅模式</p>
+</li>
+<li><p>Generator</p>
+</li>
+</ul>
+<h3>Vue 部分：</h3>
+<h4>1、Create 和 mounted 区别，</h4>
 <p>1）created:在模板渲染成 html 前调用，即通常初始化某些属性值，然后再渲染成视图。</p>
 <p>2）mounted:在模板渲染成 html 后调用，通常是初始化页面完成后，再对 html 的 dom 节点进行一些需要的操作。</p>
-<p>4、Spa 是什么</p>
-<p>5、Mvvm 都代表什么,用你的理解说说看？将模型(M）与视图（V）用“驱动桥梁”（Vm）搭建起来，达到数据驱动视图的目的</p>
-<p>6、双向绑定？Vue2 与 vue3 的双向绑定的区别</p>
-<p>7、watch 是什么怎么用</p>
-<p>8、Mixin 是什么，有什么用</p>
-<p>9、vue 的生命周期</p>
-<p>10、Restful 接口有哪些？ POST,GET,PUT,DELETE,HEAD,PATCH，OPTIONS</p>
-<p>11、Vue 组件通信有哪些方式</p>
-<p>l  props / $emit</p>
-<p>l  ref / $refs 父组件定义</p>
-<p>l  eventBus 事件总线（$emit / $on）</p>
-<p>l  依赖注入（provide / inject）这种方法通过一个空的 Vue 实例作为中央事件总线（事件中心）,用它来（ e m i t ） 触 发 事 件 和 （ emit）触发事件和（ emit）触发事件和（on）监听事件，巧妙而轻量地实现了任何组件间的通信。</p>
-<p>l  $parent / $children</p>
-<p>l  $attrs / $listeners</p>
-<p>12、如何让 CSS 只在当前组件中起作用？</p>
+<h4>2、Spa 是什么</h4>
+<h4>3、Mvvm 都代表什么,用你的理解说说看？将模型(M）与视图（V）用“驱动桥梁”（Vm）搭建起来，达到数据驱动视图的目的</h4>
+<h4>4、双向绑定？Vue2 与 vue3 的双向绑定的区别</h4>
+<h4>5、watch 是什么怎么用</h4>
+<h4>6、Mixin 是什么，有什么用</h4>
+<h4>7、vue 的生命周期</h4>
+<h4>8、Restful 接口有哪些？ POST,GET,PUT,DELETE,HEAD,PATCH，OPTIONS</h4>
+<h4>9、Vue 组件通信有哪些方式</h4>
+<ul>
+<li><p>props / $emit</p>
+</li>
+<li><p>ref / $refs 父组件定义</p>
+</li>
+<li><p>eventBus 事件总线（$emit / $on）</p>
+</li>
+<li><p>依赖注入（provide / inject）这种方法通过一个空的 Vue 实例作为中央事件总线（事件中心）,用它来（ e m i t ） 触 发 事 件 和 （ emit）触发事件和（ emit）触发事件和（on）监听事件，巧妙而轻量地实现了任何组件间的通信。</p>
+</li>
+<li><p>$parent / $children</p>
+</li>
+<li><p>$attrs / $listeners</p>
+</li>
+</ul>
+<h4>10、如何让 CSS 只在当前组件中起作用？</h4>
 <p>Scoped</p>
-<p>13、如何去掉#号</p>
+<h4>11、如何去掉#号</h4>
 <p>在 vue-router 配置 mode 为 history</p>
-<p>14、v-if 和 v-show 的区别</p>
+<h4>12、v-if 和 v-show 的区别</h4>
 <p>V-if 中变量不为 true 时 dom 中不会生成该节点，而 v-show 同样情况下会生产 dom 节点，只是将 display:none</p>
-<h4>项目部分：</h4>
-<p>1、使用的框架，技术栈</p>
-<p>2、在实际项目中扮演什么角色</p>
-<p>3、项目有哪些模块，涉及那些业务</p>
-<p>4、遇到的问题。</p>
-<p>4、项目是否做过优化，包括了代码、开发效率、性能、体验等相关领域。</p>
-<p>4、如果让你从头搭建一个项目，你会考虑哪些东西？</p>
+<h3>项目部分：</h3>
+<h4>1、使用的框架，技术栈</h4>
+<h4>2、在实际项目中扮演什么角色</h4>
+<h4>3、项目有哪些模块，涉及那些业务</h4>
+<h4>4、遇到的问题。</h4>
+<h4>5、项目是否做过优化，包括了代码、开发效率、性能、体验等相关领域。</h4>
+<h4>6、如果让你从头搭建一个项目，你会考虑哪些东西？</h4>
 <p>选框架，权限模块，菜单配置，登录模块，复用模块，复用组件，样式库，组件库，字体库，工具库，业务与用户群，浏览器兼容性，安全性，性能，团队代码质量 eslint，是否需要 ssr 等等</p>
-<p>5、前端如何模拟后端接口，</p>
+<h4>7、前端如何模拟后端接口，</h4>
 <p>可以 mock.js 来模拟后端接口</p>
 
                 </div>

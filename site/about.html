@@ -96,9 +96,26 @@ function hideMenu() {
                     <p>一个前端攻城狮，本人不善于言辞，开设本博客旨在分享技术和记录生活</p>
 
                     <h2>关于博客</h2>
-                    <p>本博客是由自研的框架构建的，所用到的技术繁杂，主要是由nodejs的http模块的createServer函数搭建markdown管理平台，通过一系列配置生成博客网站，由nodejs环境实现动态服务器渲染 。项目同时也支持自动生成html静态文件，然后再将静态文件上传到服务器。之后可能考虑用nuxt3重构本项目。有兴趣的小伙伴可以留言留下邮箱，我可以发送项目源码。</p>
+                    <p>本博客是由自研的框架构建的，所用到的技术繁杂，主要是由nodejs的http模块的createServer函数搭建markdown管理平台(如下图所示，样式吃藕)，项目启动之后,/index.html就是博客入口, 目前支持</p>
 
+                    <ol>
+                        <li>设置密码</li>
+                        <li>设置图床oss（七牛云、阿里云）</li>
+                        <li>文章.md文件的导入导出</li>
+                        <li>设置站点菜单</li>
+                        <li>设置站点名称、描述</li>
+                        <li>导入自定义css</li>
+                        <li>一键生成静态站点</li>
+                        <li>下载静态站点包</li>
+                        <li>通过SFTP一键发布站点</li>
+                    </ol>
+
+
+
+                    <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/uTGVwJDJjO8OIeV1Y1xT9HKV.png" alt="preview" style="width: 100%;">
                     
+                    <p>项目由于没有使用服务器框架比如express,koa，只用了nodejs的http模块，所以维护起来较为费劲，之后可能考虑用nuxt3重构本项目,有兴趣的小伙伴可以留言留下邮箱，我可以发送项目源码。</p>
+
                     <h2>版权声明</h2>
                     <p>文章均为原创，转载请务必注明出处。</p>
                     
