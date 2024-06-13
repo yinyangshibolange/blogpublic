@@ -38,39 +38,47 @@ function hideMenu() {
 </script>
 <div class="container-left-mask" onclick="hideMenu()"></div>
 <div class="container-left">
-    <a class="head-info" href="/index.html">
-        <!-- <img src="" alt="" class="header-banner"> -->
-        <div class="header-title color-333">张爱上了hong</div>
-        <div class="header-desp color-999">🐺爱上了🐑</div>
-    </a>
-    <ul id="menusUl" class="menus-ul">
-        <li>
-            <a href="/index.html">首页</a>
-        </li>
+    <header>
+        <a class="head-info" href="/index.html">
+            <!-- <img src="" alt="" class="header-banner"> -->
+            <div class="header-title color-333">张爱上了hong</div>
+            <div class="header-desp color-999">🐺爱上了🐑</div>
+        </a>
+        <ul id="menusUl" class="menus-ul">
+            <li>
+                <a href="/index.html">首页</a>
+            </li>
+    
+            
+                <li>
+                    <a href="/site/categorys.html">所有分类</a>
+                </li>
+                
+                <li>
+                    <a href="/site/tags.html">标签云</a>
+                </li>
+                
+                <li>
+                    <a href="/site/about.html">关于</a>
+                </li>
+                
+    
+                    <script>
+                        $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                            if($(el).attr("href") === window.location.pathname) {
+                                $(el).addClass("active")
+                            }
+                        })
+                    </script>
+        </ul>
+    </header>
 
-        
-            <li>
-                <a href="/site/categorys.html">所有分类</a>
-            </li>
-            
-            <li>
-                <a href="/site/tags.html">标签云</a>
-            </li>
-            
-            <li>
-                <a href="/site/about.html">关于</a>
-            </li>
-            
-
-                <script>
-                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
-                        if($(el).attr("href") === window.location.pathname) {
-                            $(el).addClass("active")
-                        }
-                    })
-                </script>
-    </ul>
+    <footer>
+        <p class="font-13px color-999">Power by hongyu</p>
+        <p class="font-13px color-999">文章均为原创，转载请务必注明出处</p>
+    </footer>
 </div>
+
 
     
 
@@ -83,10 +91,11 @@ function hideMenu() {
  <div class="list">
      
          <a class="item" href="/site/detail_f298c9ac-c243-4c9d-8a05-9fc204b75ed6.html">
+           
              <!-- <img src="" alt="" class="item-banner"> -->
              <div class="item-container">
                 <div class="flex justify-between align-center  ">
-                    <h3 class="item-title">
+                    <h3 class="item-title ">
                         billfish
                     </h3>
                 </div>
@@ -114,10 +123,11 @@ billfish搭配浏览器采集插件，可以很轻松的采集浏览器中的图
          </a>
      
          <a class="item" href="/site/detail_1c1ce198-0396-4873-aa4b-01ea7e59bb98.html">
+           
              <!-- <img src="" alt="" class="item-banner"> -->
              <div class="item-container">
                 <div class="flex justify-between align-center  ">
-                    <h3 class="item-title">
+                    <h3 class="item-title ">
                         PowerToys
                     </h3>
                 </div>
@@ -144,10 +154,11 @@ billfish搭配浏览器采集插件，可以很轻松的采集浏览器中的图
          </a>
      
          <a class="item" href="/site/detail_0fcece4d-3f40-4ea3-8989-d8972ed37d94.html">
+           
              <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/S0pwGbcQCAAmz14oR36wx9o-.jpeg" alt="" class="item-banner"> -->
              <div class="item-container">
                 <div class="flex justify-between align-center  ">
-                    <h3 class="item-title">
+                    <h3 class="item-title ">
                         snipaste
                     </h3>
                 </div>

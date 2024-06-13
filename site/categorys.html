@@ -39,39 +39,47 @@ function hideMenu() {
 </script>
 <div class="container-left-mask" onclick="hideMenu()"></div>
 <div class="container-left">
-    <a class="head-info" href="/index.html">
-        <!-- <img src="" alt="" class="header-banner"> -->
-        <div class="header-title color-333">张爱上了hong</div>
-        <div class="header-desp color-999">🐺爱上了🐑</div>
-    </a>
-    <ul id="menusUl" class="menus-ul">
-        <li>
-            <a href="/index.html">首页</a>
-        </li>
+    <header>
+        <a class="head-info" href="/index.html">
+            <!-- <img src="" alt="" class="header-banner"> -->
+            <div class="header-title color-333">张爱上了hong</div>
+            <div class="header-desp color-999">🐺爱上了🐑</div>
+        </a>
+        <ul id="menusUl" class="menus-ul">
+            <li>
+                <a href="/index.html">首页</a>
+            </li>
+    
+            
+                <li>
+                    <a href="/site/categorys.html">所有分类</a>
+                </li>
+                
+                <li>
+                    <a href="/site/tags.html">标签云</a>
+                </li>
+                
+                <li>
+                    <a href="/site/about.html">关于</a>
+                </li>
+                
+    
+                    <script>
+                        $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                            if($(el).attr("href") === window.location.pathname) {
+                                $(el).addClass("active")
+                            }
+                        })
+                    </script>
+        </ul>
+    </header>
 
-        
-            <li>
-                <a href="/site/categorys.html">所有分类</a>
-            </li>
-            
-            <li>
-                <a href="/site/tags.html">标签云</a>
-            </li>
-            
-            <li>
-                <a href="/site/about.html">关于</a>
-            </li>
-            
-
-                <script>
-                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
-                        if($(el).attr("href") === window.location.pathname) {
-                            $(el).addClass("active")
-                        }
-                    })
-                </script>
-    </ul>
+    <footer>
+        <p class="font-13px color-999">Power by hongyu</p>
+        <p class="font-13px color-999">文章均为原创，转载请务必注明出处</p>
+    </footer>
 </div>
+
    <div class="container-content">
 
     <h2>所有分类</h2>

@@ -38,39 +38,47 @@ function hideMenu() {
 </script>
 <div class="container-left-mask" onclick="hideMenu()"></div>
 <div class="container-left">
-    <a class="head-info" href="/index.html">
-        <!-- <img src="" alt="" class="header-banner"> -->
-        <div class="header-title color-333">张爱上了hong</div>
-        <div class="header-desp color-999">🐺爱上了🐑</div>
-    </a>
-    <ul id="menusUl" class="menus-ul">
-        <li>
-            <a href="/index.html">首页</a>
-        </li>
+    <header>
+        <a class="head-info" href="/index.html">
+            <!-- <img src="" alt="" class="header-banner"> -->
+            <div class="header-title color-333">张爱上了hong</div>
+            <div class="header-desp color-999">🐺爱上了🐑</div>
+        </a>
+        <ul id="menusUl" class="menus-ul">
+            <li>
+                <a href="/index.html">首页</a>
+            </li>
+    
+            
+                <li>
+                    <a href="/site/categorys.html">所有分类</a>
+                </li>
+                
+                <li>
+                    <a href="/site/tags.html">标签云</a>
+                </li>
+                
+                <li>
+                    <a href="/site/about.html">关于</a>
+                </li>
+                
+    
+                    <script>
+                        $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                            if($(el).attr("href") === window.location.pathname) {
+                                $(el).addClass("active")
+                            }
+                        })
+                    </script>
+        </ul>
+    </header>
 
-        
-            <li>
-                <a href="/site/categorys.html">所有分类</a>
-            </li>
-            
-            <li>
-                <a href="/site/tags.html">标签云</a>
-            </li>
-            
-            <li>
-                <a href="/site/about.html">关于</a>
-            </li>
-            
-
-                <script>
-                    $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
-                        if($(el).attr("href") === window.location.pathname) {
-                            $(el).addClass("active")
-                        }
-                    })
-                </script>
-    </ul>
+    <footer>
+        <p class="font-13px color-999">Power by hongyu</p>
+        <p class="font-13px color-999">文章均为原创，转载请务必注明出处</p>
+    </footer>
 </div>
+
 
     
 
@@ -82,11 +90,43 @@ function hideMenu() {
         
  <div class="list">
      
+         <a class="item" href="/site/detail_6b3c0189-5d72-4ef4-8e0e-4823d828f910.html">
+           
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title top">
+                        定位之粘性定位sticky
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    sticky定位是一个比其他几个定位static,fixed,absolute,relative发布都晚很多的定位方式，译为粘性定位，mdn是这样描述它的：
+
+元素根据正常文档流进行定位，然后相对它的
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-06-13 10:20:45
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
          <a class="item" href="/site/detail_37e1c415-62f9-449d-b4f4-cea74af8157c.html">
+           
              <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/sJnvuP-8DFxkGGGCmF9NT61u.jpeg" alt="" class="item-banner"> -->
              <div class="item-container">
                 <div class="flex justify-between align-center  ">
-                    <h3 class="item-title">
+                    <h3 class="item-title ">
                         基础面试问题整理
                     </h3>
                 </div>
@@ -110,36 +150,6 @@ html部分：
                     </div>
                     <div class="item-time  flex justify-end">
                         2024-06-13 09:53:29
-                    </div>
-                </div>
-             </div>
-
-         </a>
-     
-         <a class="item" href="/site/detail_6b3c0189-5d72-4ef4-8e0e-4823d828f910.html">
-             <!-- <img src="" alt="" class="item-banner"> -->
-             <div class="item-container">
-                <div class="flex justify-between align-center  ">
-                    <h3 class="item-title">
-                        定位之粘性定位sticky
-                    </h3>
-                </div>
-   
-                <div class="item-desp  font-16px line-24px">
-                    sticky定位是一个比其他几个定位static,fixed,absolute,relative发布都晚很多的定位方式，译为粘性定位，mdn是这样描述它的：
-
-元素根据正常文档流进行定位，然后相对它的
-                </div>
-   
-   
-   
-                <div class="flex justify-between align-center mt-10px">
-                   
-                    <div class="item-author">
-                        作者：hongyu
-                    </div>
-                    <div class="item-time  flex justify-end">
-                        2024-06-13 10:20:45
                     </div>
                 </div>
              </div>
