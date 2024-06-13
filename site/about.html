@@ -13,13 +13,14 @@
     <!-- <link rel="stylesheet" href="css/checkbix.min.css">
     <script src="js/checkbix.min.js"></script> -->
     <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
 
     
 </head>
 
 <body><div id="app">
-<div id="container" class="container">
-    <a onclick="showMenu()" class="menu-trigger-btn">
+    <div id="container" class="container">
+        <a onclick="showMenu()" class="menu-trigger-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
 </a>
 <script>
@@ -80,17 +81,61 @@ function hideMenu() {
 </div>
 
 
-    
-    <div class="container-content">
 
-        
-</div>
+            <div class="container-content">
+                <h1>关于</h1>
+                <div class="flex justify-between align-center">
+                    <div>作者：hongyu</div>
+                    <span id="/site/about.html" class="leancloud_visitors" data-flag-title="关于">
+                        <em class="post-meta-item-text">阅读量 </em>
+                        <i class="leancloud-visitors-count">0</i>
+                    </span>
+                </div>
+                <div class="preview-content markdown-body">
+                    <h2>我是谁</h2>
+                    <p>一个前端攻城狮，本人不善于言辞，开设本博客旨在分享技术和记录生活</p>
 
-</div>
+                    <h2>关于博客</h2>
+                    <p>本博客是由自研的框架构建的，所用到的技术繁杂，主要是由nodejs的http模块的createServer函数搭建markdown管理平台，通过一系列配置生成博客网站，由nodejs环境实现动态服务器渲染 。项目同时也支持自动生成html静态文件，然后再将静态文件上传到服务器。之后可能考虑用nuxt3重构本项目。有兴趣的小伙伴可以留言留下邮箱，我可以发送项目源码。</p>
+
+                    
+                    <h2>版权声明</h2>
+                    <p>文章均为原创，转载请务必注明出处。</p>
+                    
+
+                    
+                    <!-- <h2>申请友链</h2>
+                    <p>如果你想交换友情链接，请移步本站 友链 页面留言。</p> -->
+                    
+                    <h2>联系方式</h2>
+                    <p>Email：<a href="mailto:1192492051@qq.com">1192492051@qq.com</a></p>
+
+                    
+                    
+                </div>
 
 
-<script>
-</script>
+
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+    </div>
+
+
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
 </div></body>
 
 </html>
