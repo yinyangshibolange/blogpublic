@@ -94,10 +94,10 @@ function hideMenu() {
                     </div>
                     <div class="flex justify-between align-center">
                         <div class="author "><!--作者-->
-                            
+                            作者：hongyu
                         </div>
                         <div class="publish_time "><!--发布时间-->
-                            2024-06-11 16:15:50
+                            2024-06-13 09:53:24
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@ function hideMenu() {
             }
         }
         $(".markdown-body pre ").each((index, el) => {
-            $(el).append($(`
+            $(el).prepend($(`
                 <a class="pre-code-copy" onclick="copyCode()">copy</a>
             `))
         })

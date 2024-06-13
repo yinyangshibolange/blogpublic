@@ -161,7 +161,7 @@ function hideMenu() {
             }
         }
         $(".markdown-body pre ").each((index, el) => {
-            $(el).append($(`
+            $(el).prepend($(`
                 <a class="pre-code-copy" onclick="copyCode()">copy</a>
             `))
         })

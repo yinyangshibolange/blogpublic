@@ -87,7 +87,7 @@ function hideMenu() {
 
                 <div class="mb-20px ">
                     <div class="type"><!--分类-->
-                        分类：<a href="/site/type_折腾的技术.html">折腾的技术</a>
+                        分类：<a href="/site/type_折腾的全栈.html">折腾的全栈</a>
                     </div>
                     <div class="flex justify-between align-center">
                         <div class="author "><!--作者-->
@@ -176,7 +176,7 @@ console.log(minArr.join(&#39;,&#39;))
             }
         }
         $(".markdown-body pre ").each((index, el) => {
-            $(el).append($(`
+            $(el).prepend($(`
                 <a class="pre-code-copy" onclick="copyCode()">copy</a>
             `))
         })
