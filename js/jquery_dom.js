@@ -15,7 +15,7 @@
                     </div> 
                 </div>
             </div>
-        `;s("body").append(c),s(".confirm-ok").click(function(){i(),s(".confirm").remove()}),s(".confirm-cancle").click(function(){n(),s(".confirm").remove()})},window.showMessage=function(c,o){history.replaceState(null,null,window.location.href.replace(/[\?&]success=[^&]*/,"").replace(/[\?&]message=[^&]*/,""));let i,n;"1"===c?(i="success",n=o||""):"0"===c&&(i="error",n=o||""),n&&(o=`
+        `;s("body").append(c),s(".confirm-ok").click(function(){i(),s(".confirm").remove()}),s(".confirm-cancle").click(function(){n(),s(".confirm").remove()})},window.showMessage=function(c,o){history.replaceState(null,null,window.location.href.replace(/[\?&]success=[^&]*/,"").replace(/[\?&]message=[^&]*/,""));let i,n;"1"===c||1===c?(i="success",n=o||""):"0"!==c&&0!==c||(i="error",n=o||""),n&&(o=`
             <div class="message ${i}">
            ${"1"===c?'<i class="iconfont icon-checkgou"></i>':'<i class="iconfont icon-about"></i>'}   <div class="message-body">${n}</div>
             </div>
