@@ -1,31 +1,36 @@
-!function(e){window.newConfirm=function({title:i="提示",content:o="",ok:n=()=>{},cancle:c=()=>{}}){i=`
+!function(s){window.newConfirm=function({title:o="提示",content:i="",ok:e=()=>{},cancle:c=()=>{},showFooter:n=!0}){o=`
             <div class="confirm">
                 <div class="confirm-mask"></div>
                 <div class="confirm-content">
-                    <div class="confirm-title">${i}</div>
-                    <div class="confirm-body">${o}
-                  
+                    <div class="confirm-title">${o}</div>
+                    <div class="confirm-body">
+                        ${i}
                     </div>
-                  <div class="confirm-footer">
-                        <div class="confirm-btns">
-                    
-                        <button class="confirm-ok common-btn primary" >确定</button>
-                        <button class=" confirm-cancle common-btn" >取消</button>
-</div>
-                    </div> 
+                    ${n?`
+                               <div class="confirm-footer">
+                                    <div class="confirm-btns">
+                                        <button class="confirm-ok common-btn primary" >确定</button>
+                                        <button class=" confirm-cancle common-btn" >取消</button>
+                                    </div>
+                                </div> 
+                        `:""}
                 </div>
             </div>
-        `;e("body").append(i),e(".confirm-ok").click(function(){n(),e(".confirm").remove()}),e(".confirm-cancle").click(function(){c(),e(".confirm").remove()})},window.showMessage=function(i,o){history.replaceState(null,null,window.location.href.replace(/[\?&]success=[^&]*/,"").replace(/[\?&]message=[^&]*/,""));let n,c;"1"===i||1===i?(n="success",c=o||""):"0"!==i&&0!==i||(n="error",c=o||""),c&&(o=`
-            <div class="message ${n}">
-           ${"1"===i?'<i class="iconfont icon-checkgou"></i>':'<i class="iconfont icon-about"></i>'}   <div class="message-body">${c}</div>
+        `;s("body").append(o),s(".confirm-ok").click(function(){e(),s(".confirm").remove()}),s(".confirm-cancle").click(function(){"function"==typeof c&&c(),s(".confirm").remove()})},window.showMessage=function(o,i){history.replaceState(null,null,window.location.href.replace(/[\?&]success=[^&]*/,"").replace(/[\?&]message=[^&]*/,""));let e,c;"1"===o||1===o?(e="success",c=i||""):"0"!==o&&0!==o||(e="error",c=i||""),c&&(i=`
+            <div class="message ${e}">
+           ${"1"===o?'<i class="iconfont icon-checkgou"></i>':'<i class="iconfont icon-about"></i>'}   <div class="message-body">${c}</div>
             </div>
-        `,e("body").append(o),setTimeout(()=>{e(".message").remove()},2e3))},window.previewImage=function(i){i=e(`
-                        <img src="${i}" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background : rgba(0,0,0,0.5); object-fit: contain; z-index: 90010192;">
-            
-            `).on("click",function(i){this.remove()});e("body").append(i)},window.previewVideo=function(i){i=e(`
-            <div>
-                <div class="mask" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background : rgba(0,0,0,0.5); object-fit: contain; z-index: 90010191;"></div>
-                <video src="${i}" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background : rgba(0,0,0,0.5); object-fit: contain; z-index: 90010192;">
+        `,s("body").append(i),setTimeout(()=>{s(".message").remove()},2e3))},window.closePreview=function(){s(event.target).closest(".common-preview").remove()},window.previewImage=function(o){o=s(`
+            <div class="common-preview">
+                <div class="close" style=""  onclick="closePreview()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg>
+                </div>
+                <img class="media" src="${o}" style="">
+            </div>
+            `);s("body").append(o)},window.previewVideo=function(o){o=s(`
+            <div class="common-preview">
+                <div class="close" style="" onclick="closePreview()"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></div>
+                <video class="media" src="${o}" style="" controls>
                 </video>
             </div>
-        `).on("click",function(i){this.remove()});e("body").append(i)}}(jQuery);
+        `);s("body").append(o)},window.bindFormSubmit=function(o,i,e){s(o).on("submit",function(o){o.preventDefault();o=o.target;s.ajax({url:o.action,type:o.method,data:new FormData(o),contentType:!1,processData:!1,success:i,fail:e})})},window.copyCode=async function(o){try{await navigator.clipboard.writeText(o)}catch(o){}}}(jQuery);
