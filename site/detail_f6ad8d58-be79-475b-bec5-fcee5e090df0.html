@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>js内存管理和内存泄露</title>
+    <meta name="description" content="内存管理是所有语言都会涉及到的一个重要内容，在javascript中同样也需要管理，不同的是javascript这个高级语言在内存管理上是无感知的，就是引擎会帮我们自动管理内存。
+例如我们在创建一个对">
+    <meta name="keywords" content="前端性能">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <header>
+        <a class="head-info" href="/index.html">
+            <!-- <img src="" alt="" class="header-banner"> -->
+            <div class="header-title color-333">HONG之间</div>
+            <div class="header-desp color-999">🐺爱上了🐑</div>
+        </a>
+        <ul id="menusUl" class="menus-ul">
+            <li>
+                <a href="/index.html">首页</a>
+            </li>
+
+            
+                <li>
+                    <a href="/site/categorys.html">所有分类</a>
+                </li>
+                
+                <li>
+                    <a href="/site/projects.html">作品 or demo</a>
+                </li>
+                
+                <li>
+                    <a href="/site/tags.html">标签云</a>
+                </li>
+                
+                <li>
+                    <a href="/site/links.html">友链</a>
+                </li>
+                
+                <li>
+                    <a href="/site/about.html">关于</a>
+                </li>
+                
+
+                    <script>
+                        $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                            if($(el).attr("href") === window.location.pathname) {
+                                $(el).addClass("active")
+                            }
+                        })
+                    </script>
+        </ul>
+    </header>
+
+    <footer>
+        <p class="my-links">
+            <a href="https://github.com/yinyangshibolange/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16"><path fill="#999" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01 1.08.58 1.23.82c.72 1.21 1.87.87 2.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0 0 .67-.21 2.2.82c.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82c.44 1.1.16 1.92.08 2.12c.51.56.82 1.27.82 2.15c0 3.07-1.87 3.75-3.65 3.95c.29.25.54.73.54 1.48c0 1.07-.01 1.93-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+            </a>
+            <a href="https://gitee.com/mrhki" target="_blank">
+                <svg t="1718785826489" class="icon" width="1.2em" height="1.2em" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4252" xmlns:xlink="http://www.w3.org/1999/xlink" ><path  fill="#999" d="M512 1024C230.4 1024 0 793.6 0 512S230.4 0 512 0s512 230.4 512 512-230.4 512-512 512z m259.2-569.6H480c-12.8 0-25.6 12.8-25.6 25.6v64c0 12.8 12.8 25.6 25.6 25.6h176c12.8 0 25.6 12.8 25.6 25.6v12.8c0 41.6-35.2 76.8-76.8 76.8h-240c-12.8 0-25.6-12.8-25.6-25.6V416c0-41.6 35.2-76.8 76.8-76.8h355.2c12.8 0 25.6-12.8 25.6-25.6v-64c0-12.8-12.8-25.6-25.6-25.6H416c-105.6 0-188.8 86.4-188.8 188.8V768c0 12.8 12.8 25.6 25.6 25.6h374.4c92.8 0 169.6-76.8 169.6-169.6v-144c0-12.8-12.8-25.6-25.6-25.6z" p-id="4253"></path></svg>
+             </a>
+        </p>
+        <p class="font-13px color-999">Power by hongyu</p>
+        <p class="font-13px color-999">文章均为原创，转载请务必注明出处</p>
+    </footer>
+</div>
+
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        js内存管理和内存泄露
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type flex align-center justify-between"><!--分类-->
+                        <div>分类：<a href="/site/type_折腾的前端.html">折腾的前端</a></div>
+
+                        <span id="/site/detail_f6ad8d58-be79-475b-bec5-fcee5e090df0.html" class="leancloud_visitors" data-flag-title="js内存管理和内存泄露">
+                            <em class="post-meta-item-text">阅读量 </em>
+                            <i class="leancloud-visitors-count">0</i>
+                        </span>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-08-12 09:50:27
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <p>内存管理是所有语言都会涉及到的一个重要内容，在javascript中同样也需要管理，不同的是javascript这个高级语言在内存管理上是无感知的，就是引擎会帮我们自动管理内存。</p>
+<h2>内存管理</h2>
+<p>我们在创建一个对象变量的时候经历了内存管理</p>
+<ol>
+<li>创建对象（开辟内存空间）</li>
+<li>声明变量引用对象（对象内存地址引用）</li>
+<li>调用对象</li>
+<li>将变量设置为其他数据或对象（原对象不可访问、不可引用、不可达，其内存将被回收）</li>
+</ol>
+<h2>垃圾收集器</h2>
+<p>垃圾收集器的类型：</p>
+<ol>
+<li>标记-清除：最初JavaScript引擎中使用的方法，先给所有活动对象打上标记，然后回收未标记的对象。</li>
+<li>引用计数：每个对象维护一个引用计数，当计数为0时回收对象。但是这种方法有循环引用的问题，后来被淘汰。</li>
+<li>分代收集：根据对象的存活时间将堆分为不同的代，对不同的代使用不同的算法以优化性能。</li>
+</ol>
+<h2>内存泄露</h2>
+<p>在JavaScript中，内存泄露是指由于某些原因导致内存无法被垃圾回收器（GC）回收，从而导致应用程序占用的内存持续增长。那么有哪些情况可能是会导致内存泄露，需要我们在开发中注意的呢：</p>
+<ol>
+<li>意外的全局变量：在函数内部，如果使用未声明的变量或使用this关键字（当它指向window对象时），可能会不小心创建全局变量，而这些全局变量不会被回收。</li>
+<li>闭包引起的内存泄漏：闭包可以访问创建时的作用域中的变量，即使这些变量在函数执行完毕后仍然被闭包引用，导致无法被垃圾回收。虽然闭包有众多好处，但也不能滥用。</li>
+<li>没有清理的DOM元素引用：如果在一个全局变量或长时间存活的对象中引用了DOM元素，即使该DOM元素从页面中移除，由于仍有引用存在，它也不会被垃圾回收。</li>
+<li>被遗忘的定时器或回调：如果设置了定时器或者注册了事件监听器，而没有在适当的时候取消它们，这些回调函数会持续占用内存。</li>
+<li>循环引用：在某些情况下，对象之间形成循环引用，如果没有外部引用指向它们，这些对象可能不会被垃圾回收。</li>
+<li>缓存数据未清理：如果应用程序中使用了缓存机制，而缓存数据没有在不再需要时被清理，这也可能导致内存泄漏。</li>
+<li>未释放的事件监听器：如果为元素注册了事件监听器，并且在元素不再使用时没有移除这些监听器，这也可能导致内存泄漏。</li>
+<li>遗留的Web动画或请求：例如，如果启动了一个Web动画或网络请求，并且在不再需要时没有取消或终止它们，它们可能会持续占用内存。</li>
+</ol>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                            <a class="tag-item" href="/site/tag_前端性能.html">#前端性能</a>
+                        
+                    
+                </div>
+                <h2>评论一下</h2>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).prepend($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>
