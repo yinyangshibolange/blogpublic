@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/css/modules/preview.css">
     <link rel="stylesheet" href="/css/markdown.css">
     <link rel="stylesheet" href="/css/modules/detail.css">
+    <script type="text/javascript" src="/plugins/lenis.min.js"></script>
+    <script type="text/javascript" src="/js/preview.js"></script>
     
 </head>
 
@@ -121,14 +123,14 @@ function hideMenu() {
                             作者：hongyu
                         </div>
                         <div class="publish_time "><!--发布时间-->
-                            2024-08-12 11:07:33
+                            2024-08-12 11:09:37
                         </div>
                     </div>
                 </div>
 
                 <div class="preview-content markdown-body">
                     <p>SSE是基于WebSocket协议的一种技术，它和websocket一样也是HTML5出现的一种新技术，它允许服务器向客户端发送事件和数据，可实现单向通讯。与WebSocket相比,SSE的使用更为简单,对服务器端的改动也较小,因为它主要利用现有的HTTP/HTTPS协议进行数据传输。SSE的出现使得客户端监听服务端数据状态的变化多了一种比轮询更高效，比websocket更方便的一种方式。</p>
-<p>它的实现方式很简单，下面我用nodejs+axios来演示一下：</p>
+<p>它的实现方式很简单，下面我用nodejs+js来演示一下：</p>
 <h3>nodejs服务端</h3>
 <pre><code class="language-javascript">const http = require(&#39;http&#39;);
 const server = http.createServer((req, res) =&gt; {
