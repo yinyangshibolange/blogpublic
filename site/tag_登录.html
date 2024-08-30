@@ -8,13 +8,11 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/vnocss/vno.css">
     <meta charset="utf-8">
-    <title>所有标签</title>
+    <title>内容标签</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <!-- <link rel="stylesheet" href="css/checkbix.min.css">
     <script src="js/checkbix.min.js"></script> -->
     <link rel="stylesheet" href="/css/modules/preview.css">
-    <link rel="stylesheet" href="/css/modules/tags.css">
-    <script src="/plugins/TagCloud.min.js"></script> 
     
 
     <script type="text/javascript" src="/plugins/lenis.min.js"></script>
@@ -23,6 +21,7 @@
 
 <body><div id="app">
 <div id="container" class="container">
+    
     <a onclick="showMenu()" class="menu-trigger-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
 </a>
@@ -100,32 +99,55 @@ function hideMenu() {
 </div>
 
 
+    
+
     <div class="container-content">
-      <div id="tagsCloud">
+        <div class="mb-10px ml-35px">
+            <a href="/site/tags.html">标签云</a>  /  <span>登录</span>
+        </div>
 
-      </div>
+        
+ <div class="list">
+     
+         <a class="item" href="/site/detail_5cd8dfe9-202e-4bad-b268-42e15293a2ca.html">
+           
+             <!-- <img src="" alt="" class="item-banner"> -->
+             <div class="item-container">
+                <div class="flex justify-between align-center  ">
+                    <h3 class="item-title ">
+                        单点登录前端方案
+                    </h3>
+                </div>
+   
+                <div class="item-desp  font-16px line-24px">
+                    先说说什么是单点登录？
+单点登录就是多个应用共用一套登录机制，并且只要在一个应用已经登录过，那么在另一个应用中可以直接使用登录权限进行操作，而不需要再次进行登录，这大大优化了用户体验。
+
+                </div>
+   
+   
+   
+                <div class="flex justify-between align-center mt-10px">
+                   
+                    <div class="item-author">
+                        作者：hongyu
+                    </div>
+                    <div class="item-time  flex justify-end">
+                        2024-08-29 17:11:11
+                    </div>
+                </div>
+             </div>
+
+         </a>
+     
+ </div>
+
+
     </div>
-
-
 </div>
 
 
 <script>
-  var tags = JSON.parse(`[{"tag":"登录","count":1},{"tag":"前端","count":2},{"tag":"HTTP","count":1},{"tag":"js","count":2},{"tag":"正则表达式","count":1},{"tag":"前端性能","count":1},{"tag":"二进制","count":1},{"tag":"面试","count":1},{"tag":"vue","count":1},{"tag":"html","count":1},{"tag":"css","count":2},{"tag":"pdf","count":1},{"tag":"python","count":1},{"tag":"软件","count":3},{"tag":"billfish","count":2},{"tag":"powertoys","count":1}]`).map(item => item.tag)
-  TagCloud("#tagsCloud", tags, {
-    radius: 156,
-    maxSpeed: 'normal',
-    initSpeed: 'normal',
-    direction: 135,
-    containerClass: '',
-    itemClass: 'tag-item',
-  });
-
-$("#tagsCloud").on('click',  (e) => {
-    if ($(e.target).hasClass("tag-item")) {
-        window.location.href = `/site/tag_${$(e.target).text()}.html`
-    }
-});
 </script>
 </div></body>
 

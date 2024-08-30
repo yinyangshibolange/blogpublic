@@ -8,22 +8,25 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/vnocss/vno.css">
     <meta charset="utf-8">
-    <title>所有标签</title>
+    <title>移动端如何实现下拉刷新、下拉加载更多</title>
+    <meta name="description" content="下拉刷新、下拉加载更多是移动端常用的功能。主要是通过监听touchstart、touchmove、touchend来实现。
+实现方法
+对于小程序、APP来说都有相应的API来轻松实现，所以我这边只将在">
+    <meta name="keywords" content="">
     <link rel="shortcut icon" href="/favicon.ico">
-    <!-- <link rel="stylesheet" href="css/checkbix.min.css">
-    <script src="js/checkbix.min.js"></script> -->
     <link rel="stylesheet" href="/css/modules/preview.css">
-    <link rel="stylesheet" href="/css/modules/tags.css">
-    <script src="/plugins/TagCloud.min.js"></script> 
-    
-
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
     <script type="text/javascript" src="/plugins/lenis.min.js"></script>
     <script type="text/javascript" src="/js/preview.js"></script>
+    
 </head>
 
 <body><div id="app">
-<div id="container" class="container">
-    <a onclick="showMenu()" class="menu-trigger-btn">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
 </a>
 <script>
@@ -100,33 +103,87 @@ function hideMenu() {
 </div>
 
 
-    <div class="container-content">
-      <div id="tagsCloud">
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        移动端如何实现下拉刷新、下拉加载更多
+                    </h1>
 
-      </div>
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type flex align-center justify-between"><!--分类-->
+                        <div>分类：<a href="/site/type_折腾的前端.html">折腾的前端</a></div>
+
+                        <span id="/site/detail_51afa7dd-50fc-47e0-97aa-4640fbf45c57.html" class="leancloud_visitors" data-flag-title="移动端如何实现下拉刷新、下拉加载更多">
+                            <em class="post-meta-item-text">阅读量 </em>
+                            <i class="leancloud-visitors-count">0</i>
+                        </span>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-08-29 17:33:25
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <p>下拉刷新、下拉加载更多是移动端常用的功能。主要是通过监听touchstart、touchmove、touchend来实现。</p>
+<h2>实现方法</h2>
+<p>对于小程序、APP来说都有相应的API来轻松实现，所以我这边只将在H5页面中如何实现，虽然H5也有iScroll、BetterScroll、Ant Design Mobile 等第三方库。</p>
+<p>方案如下：
+对于下拉刷新，只需监听可滚动容器的touchmove事件，如果可滚动容器滚动到顶部，那么马上记录当前手势位置为起始位置，如果继续滑动，那么就给可滚动容器设置transform: translateY为当前手势位置Y数值-起始手势位置Y数值，如果需要，也可以加入动态系数来实现阻尼感。
+对于上拉加载更多，原理其实差不多，只是方向不同。</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                    
+                </div>
+                <h2>评论一下</h2>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
     </div>
 
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
 
-</div>
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).prepend($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
 
 
-<script>
-  var tags = JSON.parse(`[{"tag":"登录","count":1},{"tag":"前端","count":2},{"tag":"HTTP","count":1},{"tag":"js","count":2},{"tag":"正则表达式","count":1},{"tag":"前端性能","count":1},{"tag":"二进制","count":1},{"tag":"面试","count":1},{"tag":"vue","count":1},{"tag":"html","count":1},{"tag":"css","count":2},{"tag":"pdf","count":1},{"tag":"python","count":1},{"tag":"软件","count":3},{"tag":"billfish","count":2},{"tag":"powertoys","count":1}]`).map(item => item.tag)
-  TagCloud("#tagsCloud", tags, {
-    radius: 156,
-    maxSpeed: 'normal',
-    initSpeed: 'normal',
-    direction: 135,
-    containerClass: '',
-    itemClass: 'tag-item',
-  });
 
-$("#tagsCloud").on('click',  (e) => {
-    if ($(e.target).hasClass("tag-item")) {
-        window.location.href = `/site/tag_${$(e.target).text()}.html`
-    }
-});
-</script>
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
 </div></body>
 
 </html>

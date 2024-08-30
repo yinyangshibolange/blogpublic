@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"  viewport-fit="cover">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>单点登录前端方案</title>
+    <meta name="description" content="先说说什么是单点登录？
+单点登录就是多个应用共用一套登录机制，并且只要在一个应用已经登录过，那么在另一个应用中可以直接使用登录权限进行操作，而不需要再次进行登录，这大大优化了用户体验。
+">
+    <meta name="keywords" content="登录">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    <script type="text/javascript" src="/plugins/lenis.min.js"></script>
+    <script type="text/javascript" src="/js/preview.js"></script>
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <header>
+        <a class="head-info" href="/index.html">
+            <!-- <img src="" alt="" class="header-banner"> -->
+            <div class="header-title color-333">HONG之间</div>
+            <div class="header-desp color-999">🐺爱上了🐑</div>
+        </a>
+        <ul id="menusUl" class="menus-ul">
+            <li>
+                <a href="/index.html">首页</a>
+            </li>
+
+            
+                <li>
+                    <a href="/site/categorys.html">所有分类</a>
+                </li>
+                
+                <li>
+                    <a href="/site/projects.html">作品 or demo</a>
+                </li>
+                
+                <li>
+                    <a href="/site/tags.html">标签云</a>
+                </li>
+                
+                <li>
+                    <a href="/site/links.html">友链</a>
+                </li>
+                
+                <li>
+                    <a href="/site/about.html">关于</a>
+                </li>
+                
+
+                    <script>
+                        $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                            if($(el).attr("href") === window.location.pathname) {
+                                $(el).addClass("active")
+                            }
+                        })
+                    </script>
+        </ul>
+    </header>
+
+    <footer>
+        <p class="my-links">
+            <a href="https://github.com/yinyangshibolange/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16"><path fill="#999" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01 1.08.58 1.23.82c.72 1.21 1.87.87 2.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0 0 .67-.21 2.2.82c.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82c.44 1.1.16 1.92.08 2.12c.51.56.82 1.27.82 2.15c0 3.07-1.87 3.75-3.65 3.95c.29.25.54.73.54 1.48c0 1.07-.01 1.93-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+            </a>
+            <a href="https://gitee.com/mrhki" target="_blank">
+                <svg t="1718785826489" class="icon" width="1.2em" height="1.2em" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4252" xmlns:xlink="http://www.w3.org/1999/xlink" ><path  fill="#999" d="M512 1024C230.4 1024 0 793.6 0 512S230.4 0 512 0s512 230.4 512 512-230.4 512-512 512z m259.2-569.6H480c-12.8 0-25.6 12.8-25.6 25.6v64c0 12.8 12.8 25.6 25.6 25.6h176c12.8 0 25.6 12.8 25.6 25.6v12.8c0 41.6-35.2 76.8-76.8 76.8h-240c-12.8 0-25.6-12.8-25.6-25.6V416c0-41.6 35.2-76.8 76.8-76.8h355.2c12.8 0 25.6-12.8 25.6-25.6v-64c0-12.8-12.8-25.6-25.6-25.6H416c-105.6 0-188.8 86.4-188.8 188.8V768c0 12.8 12.8 25.6 25.6 25.6h374.4c92.8 0 169.6-76.8 169.6-169.6v-144c0-12.8-12.8-25.6-25.6-25.6z" p-id="4253"></path></svg>
+             </a>
+        </p>
+        <p class="font-13px color-999">Power by hongyu</p>
+        <p class="font-13px color-999">文章均为原创，转载请务必注明出处</p>
+    </footer>
+</div>
+
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        单点登录前端方案
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type flex align-center justify-between"><!--分类-->
+                        <div>分类：<a href="/site/type_折腾的前端.html">折腾的前端</a></div>
+
+                        <span id="/site/detail_5cd8dfe9-202e-4bad-b268-42e15293a2ca.html" class="leancloud_visitors" data-flag-title="单点登录前端方案">
+                            <em class="post-meta-item-text">阅读量 </em>
+                            <i class="leancloud-visitors-count">0</i>
+                        </span>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-08-29 17:11:11
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <h2>先说说什么是单点登录？</h2>
+<p>单点登录就是多个应用共用一套登录机制，并且只要在一个应用已经登录过，那么在另一个应用中可以直接使用登录权限进行操作，而不需要再次进行登录，这大大优化了用户体验。</p>
+<h2>方案一 基于cookie</h2>
+<p>我们可以利用cookie可以在相同主域的不同源下进行共享的特性，实现单点登录。这种方式比较简单，主要在服务端实现，但是由于cookie容易遭受xss攻击，所以需要考虑使用secure和httponly来提高安全性。</p>
+<h2>方案二 认证中心</h2>
+<p>这个方案需要前端单独做一个认证中心，我的建议是做一个功能单一的认证中心，只需要登录、注册和凭证验证等认证动作，并使用jquery这种轻量级js库，不要使用vuejs这种spa框架，因为这种框架会使首屏加载变慢，也就是会使认证中心加载变慢，影响用户体验。
+认证中心的单点登录流程如下：</p>
+<ol>
+<li>打开系统1，系统1需要登录 那么就跳转认证中心</li>
+<li>认证中心登录并保存凭据token</li>
+<li>跳回到系统1并携带认证中心的token，系统1保存token，此时认证中心和系统2都已经登录成功</li>
+<li>打开系统2，系统2需要登录，那么也跳转认证中心</li>
+<li>此时认证中心已登录，直接带上token跳回系统2，系统2保存token，此时3个系统都已经登录成功</li>
+</ol>
+<p>这种方式的优点是可以完全跨域，并且实现简单，缺点是需要频繁跳转，影响用户体验，并且跳回系统的时候需要带上token，影响系统安全性。</p>
+<h2>方案三 基于postMessage Api</h2>
+<p>postMessage可以实现不同窗口间的数据传递，并且可以实现完全跨域，不过他主要限制于两种窗口，一种是从系统1打开的系统2（从url输入网址打开是无法传递数据的），第二种是嵌入的iframe窗口，这两种窗口我们可以传递凭证token来实现单点登录。</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                            <a class="tag-item" href="/site/tag_登录.html">#登录</a>
+                        
+                    
+                </div>
+                <h2>评论一下</h2>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).prepend($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>
