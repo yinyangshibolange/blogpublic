@@ -8,9 +8,17 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/vnocss/vno.css">
     <meta charset="utf-8">
-    <title>浅谈前端请求池</title>
-    <meta name="description" content="在前端开发中，关于是否需要实现请求池的讨论一直存在分歧。一些观点认为，封装请求池可以优化浏览器性能，加快页面的加载速度。然而，我的看法有所不同：对于前端而言，创建请求池可能并非必要，因为浏览器已经在其">
-    <meta name="keywords" content="前端">
+    <title>js中函数的长度</title>
+    <meta name="description" content="js中函数的长度代表什么？
+答：代表形参数的个数。
+比如，有如下函数
+function a (a,b,c) {
+return a+b+c
+}
+
+那么，输出a.length就是3.
+另外，如果函数中有参">
+    <meta name="keywords" content="">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/modules/preview.css">
     <link rel="stylesheet" href="/css/markdown.css">
@@ -104,7 +112,7 @@ function hideMenu() {
             <div class="container-content">
                 <div>
                     <h1 class="preview-title mb-5px">
-                        浅谈前端请求池
+                        js中函数的长度
                     </h1>
 
                 </div>
@@ -113,7 +121,7 @@ function hideMenu() {
                     <div class="type flex align-center justify-between"><!--分类-->
                         <div>分类：<a href="/site/type_折腾的前端.html">折腾的前端</a></div>
 
-                        <span id="/site/detail_93927736-26fc-4aa2-865b-766e4fcbf74b.html" class="leancloud_visitors" data-flag-title="浅谈前端请求池">
+                        <span id="/site/detail_bad979e1-5724-4f27-982e-e9518d7d1242.html" class="leancloud_visitors" data-flag-title="js中函数的长度">
                             <em class="post-meta-item-text">阅读量 </em>
                             <i class="leancloud-visitors-count">0</i>
                         </span>
@@ -123,23 +131,37 @@ function hideMenu() {
                             作者：hongyu
                         </div>
                         <div class="publish_time "><!--发布时间-->
-                            2024-09-09 11:04:48
+                            2024-09-09 14:30:35
                         </div>
                     </div>
                 </div>
 
                 <div class="preview-content markdown-body">
-                    <p>请求池的核心理念是将全局的请求并发转变为池内局部并发，通过限制并发数量来管理请求的发送。这种做法可以有效地控制对服务器的请求压力，尤其是在客户端需要同时向服务器发送大量请求时。通过分批处理请求，可以避免对服务器造成过大的负载，从而减轻服务器的压力。</p>
-<p>现代浏览器同时pending的请求数通常为6个，这个意思是说浏览器已经做了并发数为6的限制，因此我们没有必要再控制并发，但是对于前端来说，过多的任务实例势必会导致内存增长，如果在短时间内初始化大量的网络请求任务实例，很有可能会导致内存溢出，</p>
-<p><img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/jAzKbcRwpZx9wpos_GSc5E-H.jpg" alt=""></p>
-<p>所以这时候我认为可以封装一个任务池，这个任务池，包含了异步任务的实例（包括网络请求），并设置合理的任务上限，来防止内存溢出的风险。</p>
+                    <p>js中函数的长度代表什么？</p>
+<p>答：代表形参数的个数。</p>
+<p>比如，有如下函数</p>
+<pre><code class="language-javascript">function a (a,b,c) {
+return a+b+c
+}
+</code></pre>
+<p>那么，输出a.length就是3.</p>
+<p>另外，如果函数中有参数有默认值，比如</p>
+<pre><code class="language-javascript">function b(a,b=1,c) {
+    return a+b+c
+}
+</code></pre>
+<p>那么，只统计有默认值的参数之前的参数个数，输出b.length就是1。</p>
+<p>如果还有不定数量的参数，如下：</p>
+<pre><code class="language-javascript">function c(a,b=1,c,...args) {
+    return a+b+c
+}
+</code></pre>
+<p>那么,args也不会被统计，c.length是1。</p>
 
                 </div>
 
                 <div class="tags font-16px color-999 mt-10px"><!--秒速-->
                     
-                        
-                            <a class="tag-item" href="/site/tag_前端.html">#前端</a>
                         
                     
                 </div>
