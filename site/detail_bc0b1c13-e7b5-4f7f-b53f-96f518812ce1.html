@@ -8,21 +8,25 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/vnocss/vno.css">
     <meta charset="utf-8">
-    <title>内容标签</title>
+    <title>对于前端的LRU、LFU缓存优化</title>
+    <meta name="description" content="这两种都属于内存淘汰算法，当设计实例最大数到达最大值或者内存到达瓶颈时，则需要淘汰一些不常用或者是时间久远的内存实例。
+LRU
+LRU淘汰的是不用时间最长的实例，这种算法应用在例如缓存系统这种对使用时">
+    <meta name="keywords" content="">
     <link rel="shortcut icon" href="/favicon.ico">
-    <!-- <link rel="stylesheet" href="css/checkbix.min.css">
-    <script src="js/checkbix.min.js"></script> -->
     <link rel="stylesheet" href="/css/modules/preview.css">
-    
-
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
     <script type="text/javascript" src="/plugins/lenis.min.js"></script>
     <script type="text/javascript" src="/js/preview.js"></script>
+    
 </head>
 
 <body><div id="app">
-<div id="container" class="container">
-    
-    <a onclick="showMenu()" class="menu-trigger-btn">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
 </a>
 <script>
@@ -99,93 +103,126 @@ function hideMenu() {
 </div>
 
 
-    
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        对于前端的LRU、LFU缓存优化
+                    </h1>
 
-    <div class="container-content">
-        <div class="mb-10px ml-35px">
-            <a href="/site/tags.html">标签云</a>  /  <span>软件</span>
-        </div>
-
-        
- <div class="list">
-     
-         <a class="item" href="/site/detail_0fcece4d-3f40-4ea3-8989-d8972ed37d94.html">
-           
-             <!-- <img src="http://awfaw.oss-cn-hangzhou.aliyuncs.com/S0pwGbcQCAAmz14oR36wx9o-.jpeg" alt="" class="item-banner"> -->
-             <div class="item-container">
-                <div class="flex justify-between align-center  ">
-                    <h3 class="item-title ">
-                        snipaste
-                    </h3>
                 </div>
-   
-                <div class="item-desp  font-16px line-24px">
+
+                <div class="mb-20px ">
+                    <div class="type flex align-center justify-between"><!--分类-->
+                        <div>分类：<a href="/site/type_折腾的前端.html">折腾的前端</a></div>
+
+                        <span id="/site/detail_bc0b1c13-e7b5-4f7f-b53f-96f518812ce1.html" class="leancloud_visitors" data-flag-title="对于前端的LRU、LFU缓存优化">
+                            <em class="post-meta-item-text">阅读量 </em>
+                            <i class="leancloud-visitors-count">0</i>
+                        </span>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-10-21 14:15:22
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <p>这两种都属于内存淘汰算法，当设计实例最大数到达最大值或者内存到达瓶颈时，则需要淘汰一些不常用或者是时间久远的内存实例。</p>
+<h2>LRU</h2>
+<p>LRU淘汰的是不用时间最长的实例，这种算法应用在例如缓存系统这种对使用时间比较在意的系统中。</p>
+<h2>LFU</h2>
+<p>LRU淘汰的是使用频率较少的实例，这种算法应用在例如文件系统这种对使用频率比较在意的系统中。</p>
+<h2>前端应用</h2>
+<p>LRU可用于前端的缓存系统中时，我们根据算法概念，可以这么设计LRU缓存系统。</p>
+<pre><code>class MyCache {
+    cacheMap = new Map()
+    timeMap = new Map()
+    max = 10
+    constructor(max) {
+        if(max) this.max = max
+    }
+ 
+ set(key, value) {
+     if(cacheMap.has(key) || cacheMap.size &lt; this.max) {
+       cacheMap.set(key, value)
+       timeMap.set(key, Date.now())
+     } else {
+        const min = Math.min(...timeMap.values())
+        const ets = timeMap.entries()
+        let etsValue = ets.next()
+        while(!etsValue.done) {
+            if(etsValue.value[1] === min) {
+                cacheMap.delete(etsValue.value[0])
+                timeMap.delete(etsValue.value[0])
+                break
+            }
+            etsValue = ets.next()
+        }
+     }
+ }
+ 
+     get(key) {
+         const val =  cacheMap.get(key)
+         if(val) {
+             timeMap.set(key, Date.now())
+             return val
+         } else {
+         	throw new Error(&quot;缓存不存在&quot;)
+         }
+     }
+}
+</code></pre>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
                     
-Snipaste 是截图和贴图
-
-F1是快速截图
-截图时有一个附加功能，那就是颜色选择器，就是按F1你既可以截图，也可以当颜色选择器，真的是前端工程师的开发神器
-F3是贴图
-
-食用方法
-截图就不说了
-                </div>
-   
-   
-   
-                <div class="flex justify-between align-center mt-10px">
-                   
-                    <div class="item-author">
-                        作者：hongyu
-                    </div>
-                    <div class="item-time  flex justify-end">
-                        2024-06-11 16:17:19
-                    </div>
-                </div>
-             </div>
-
-         </a>
-     
-         <a class="item" href="/site/detail_1c1ce198-0396-4873-aa4b-01ea7e59bb98.html">
-           
-             <!-- <img src="" alt="" class="item-banner"> -->
-             <div class="item-container">
-                <div class="flex justify-between align-center  ">
-                    <h3 class="item-title ">
-                        PowerToys
-                    </h3>
-                </div>
-   
-                <div class="item-desp  font-16px line-24px">
-                    PowerToys
-这个微软的官方软件地址是https://learn.microsoft.com/zh-cn/windows/powertoys/
-这个软件具有许多实用小工具，能帮助我们更好更方便地
-                </div>
-   
-   
-   
-                <div class="flex justify-between align-center mt-10px">
-                   
-                    <div class="item-author">
                         
-                    </div>
-                    <div class="item-time  flex justify-end">
-                        2024-06-11 16:17:08
-                    </div>
+                    
                 </div>
-             </div>
+                <h2>评论一下</h2>
+                <div id="comments" class="container-comments mt-20px">
 
-         </a>
-     
- </div>
+                </div>
+            </div>
+
 
 
     </div>
-</div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).prepend($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
 
 
-<script>
-</script>
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
 </div></body>
 
 </html>
