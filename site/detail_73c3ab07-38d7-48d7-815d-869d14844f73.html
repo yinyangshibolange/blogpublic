@@ -125,7 +125,7 @@ function hideMenu() {
                             
                         </div>
                         <div class="publish_time "><!--发布时间-->
-                            2024-09-09 16:29:30
+                            2025-07-21 11:28:33
                         </div>
                     </div>
                 </div>
@@ -161,20 +161,68 @@ function hideMenu() {
 <p>优化页面设计: 想表达的内容需要简介明了，统一风格</p>
 <p>提高页面加载速度：优化网络加载速度，优化程序加载速度</p>
 <p>提供流畅的交互体验：使用合适的动画来避免突兀的交互，减少过多不必要的渲染来减少页面卡顿。</p>
-<p>6.如何解决⻚⾯请求接⼝⼤规模并发问题</p>
-<p>7.设计⼀套全站请求耗时统计⼯具</p>
-<p>8.⼤⽂件上传了解多少</p>
+<p>6.如何解决⻚⾯请求接⼝⼤规模并发问题
+用Promise.race和Promise.all将大规模并发改为小规模并发</p>
+<p>7.设计⼀套全站请求耗时统计⼯具
+使用performance API来检测资源和接口的调用情况，使用PerformanceObserver观察</p>
+<p>8.⼤⽂件上传了解多少
+大于某个大小的文件启用分片上传，将文件使用Blob.slice分割为多块，使用小规模并发将其上传到服务器，上传期间将分片发给web worker让其计算文件的HASH值，服务器接收的时候，将分片合并为文件，并计算HASH与客户端穿过来的HASH进行比对，以此来验证文件是否上传成功</p>
 <p>9.H5 如何解决移动端适配问题</p>
+<ol>
+<li>方案一：设计两套代码，通过nginx或者js重定向到指定代码路径</li>
+<li>方案二：使用媒体查询+响应式设计来适配</li>
+</ol>
 <p>10.站点⼀键换肤的实现⽅式有哪些？</p>
 <ol>
-<li><p>如何实现⽹⻚加载进度条？</p>
+<li><p>css变量，通过切换属性来切换不同的css变量</p>
 </li>
-<li><p>常⻅图⽚懒加载⽅式有哪些？</p>
+<li><p>类名切换，代码冗余</p>
+</li>
+<li><p>动态加载css代码，加载延迟</p>
+</li>
+<li><p>css预处理，代码冗余</p>
+</li>
+<li><p>如何实现⽹⻚加载进度条？
+performance监听页面资源加载情况，计算加载进度提供给process组件。</p>
+</li>
+<li><p>常⻅图⽚懒加载⽅式有哪些？
+原生H5，lazy属性。
+Intersection Observer API
+滚动事件监听 + 位置计算 getBoundingClientRect</p>
 </li>
 <li><p>cookie 构成部分有哪些</p>
 </li>
-<li><p>扫码登录实现⽅式</p>
-</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+<th>示例/规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Domain</td>
+<td>指定哪些域名可访问 Cookie（默认为当前域名）</td>
+<td>domain=.example.com（允许所有子域名）</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>限制 Cookie 的有效 URL 路径（默认为当前路径）</td>
+<td>path=/news（仅 /news 路径下生效）</td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>设置绝对过期时间（GMT 格式）expires=Thu, 18 Dec 2025 12:00:00 GMT</td>
+<td>Max-Age​设置相对过期时间（秒），优先级高于 Expiresmax-age=3600（1 小时后失效）​Secure​仅允许通过 HTTPS 协议传输Secure（无值，存在即生效）​HttpOnly​禁止 JavaScript 访问 Cookie，防御 XSS 攻击HttpOnly（无值，存在即生效）​SameSite​控制跨站请求时是否发送 Cookie：Strict（完全禁止）Lax（宽松允许 GET 导航）None（允许跨站，需配合 Secure）SameSite=Lax（默认策略）</td>
+</tr>
+</tbody></table>
+<ol start="7">
+<li>扫码登录实现⽅式</li>
+</ol>
+<p>pc端生成限时二维码，并携带qrid参数，并更新qrid状态为scaned
+移动端扫描二维码，将qrid和当前登录的账号绑定，点击授权按钮后将qrid和登录的账号id一起发送给服务端，服务端验证一下就给pc端发送登录成功的token和用户信息。</p>
+<ol start="9">
 <li><p>DNS 协议了解多少</p>
 </li>
 <li><p>函数式编程了解多少？</p>
@@ -189,11 +237,18 @@ function hideMenu() {
 </li>
 <li><p>《前端面试场景题》PDF里都有，获取的方法在文末了哦！</p>
 </li>
-<li><p>⼩程序为什么会有两个线程</p>
+<li><p>⼩程序为什么会有两个线程
+防止js阻塞ui渲染，js沙箱环境，不需要web一些危险api。</p>
 </li>
 <li><p>web 应⽤中如何对静态资源加载失败的场景做降级处理</p>
 </li>
-<li><p>html 中前缀为 data- 开头的元素属性是什么？</p>
+<li><p>Service Worker 是一种特殊的Worker，它可以拦截网络请求，缓存资源，甚至在离线状态下提供内容。</p>
+</li>
+<li><p>使用备用资源
+ps: 测试验证：使用DevTools模拟Offline模式或限速环境，验证降级效果。</p>
+</li>
+<li><p>html 中前缀为 data- 开头的元素属性是什么？
+自定义数据属性</p>
 </li>
 <li><p>移动端如何实现上拉加载，下拉刷新？</p>
 </li>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"  viewport-fit="cover">
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/vnocss/vno.css">
+    <meta charset="utf-8">
+    <title>web-component</title>
+    <meta name="description" content="web-component是一种html原生的自定义组件解决方案，他不基于任何库或者框架。
+在web-component被多数主流浏览器支持之前，我们进行组件化开发通常需要依赖例如react、vue等">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/modules/detail.css">
+    <script type="text/javascript" src="/plugins/lenis.min.js"></script>
+    <script type="text/javascript" src="/js/preview.js"></script>
+    
+</head>
+
+<body><div id="app">
+    <div id="container" class="container">
+
+
+        <a onclick="showMenu()" class="menu-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#333" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg>
+</a>
+<script>
+function showMenu() {
+    $('.container-left').addClass("show")
+    $('.container-left-mask').addClass("show")
+
+    $("body").css("overflow", "hidden")
+}
+function hideMenu() {
+    $('.container-left').removeClass("show")
+    $('.container-left-mask').removeClass("show")
+
+    $("body").css("overflow", "auto")
+}
+</script>
+<div class="container-left-mask" onclick="hideMenu()"></div>
+<div class="container-left">
+    <header>
+        <a class="head-info" href="/index.html">
+            <!-- <img src="" alt="" class="header-banner"> -->
+            <div class="header-title color-333">HONG之间</div>
+            <div class="header-desp color-999">上班折腾，下班折腾</div>
+        </a>
+        <ul id="menusUl" class="menus-ul">
+            <li>
+                <a href="/index.html">首页</a>
+            </li>
+
+            
+                <li>
+                    <a href="/site/categorys.html">所有分类</a>
+                </li>
+                
+                <li>
+                    <a href="/site/projects.html">作品 or demo</a>
+                </li>
+                
+                <li>
+                    <a href="/site/tags.html">标签云</a>
+                </li>
+                
+                <li>
+                    <a href="/site/links.html">友链</a>
+                </li>
+                
+                <li>
+                    <a href="/site/about.html">关于</a>
+                </li>
+                
+
+                    <script>
+                        $("#menusUl > li > a").removeClass("active").each((index, el) =>  {
+                            if($(el).attr("href") === window.location.pathname) {
+                                $(el).addClass("active")
+                            }
+                        })
+                    </script>
+        </ul>
+    </header>
+
+    <footer>
+        <p class="my-links">
+            <a href="https://github.com/yinyangshibolange/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16"><path fill="#999" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01 1.08.58 1.23.82c.72 1.21 1.87.87 2.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0 0 .67-.21 2.2.82c.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82c.44 1.1.16 1.92.08 2.12c.51.56.82 1.27.82 2.15c0 3.07-1.87 3.75-3.65 3.95c.29.25.54.73.54 1.48c0 1.07-.01 1.93-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+            </a>
+            <a href="https://gitee.com/mrhki" target="_blank">
+                <svg t="1718785826489" class="icon" width="1.2em" height="1.2em" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4252" xmlns:xlink="http://www.w3.org/1999/xlink" ><path  fill="#999" d="M512 1024C230.4 1024 0 793.6 0 512S230.4 0 512 0s512 230.4 512 512-230.4 512-512 512z m259.2-569.6H480c-12.8 0-25.6 12.8-25.6 25.6v64c0 12.8 12.8 25.6 25.6 25.6h176c12.8 0 25.6 12.8 25.6 25.6v12.8c0 41.6-35.2 76.8-76.8 76.8h-240c-12.8 0-25.6-12.8-25.6-25.6V416c0-41.6 35.2-76.8 76.8-76.8h355.2c12.8 0 25.6-12.8 25.6-25.6v-64c0-12.8-12.8-25.6-25.6-25.6H416c-105.6 0-188.8 86.4-188.8 188.8V768c0 12.8 12.8 25.6 25.6 25.6h374.4c92.8 0 169.6-76.8 169.6-169.6v-144c0-12.8-12.8-25.6-25.6-25.6z" p-id="4253"></path></svg>
+             </a>
+        </p>
+        <p class="font-13px color-999">Power by hongyu</p>
+        <p class="font-13px color-999">文章均为原创，转载请务必注明出处</p>
+    </footer>
+</div>
+
+
+            <div class="container-content">
+                <div>
+                    <h1 class="preview-title mb-5px">
+                        web-component
+                    </h1>
+
+                </div>
+
+                <div class="mb-20px ">
+                    <div class="type flex align-center justify-between"><!--分类-->
+                        <div>分类：<a href="/site/type_折腾的前端.html">折腾的前端</a></div>
+
+                        <span id="/site/detail_5ff65aff-2cd9-4dc8-acf5-4416f08b163c.html" class="leancloud_visitors" data-flag-title="web-component">
+                            <em class="post-meta-item-text">阅读量 </em>
+                            <i class="leancloud-visitors-count">0</i>
+                        </span>
+                    </div>
+                    <div class="flex justify-between align-center">
+                        <div class="author "><!--作者-->
+                            作者：hongyu
+                        </div>
+                        <div class="publish_time "><!--发布时间-->
+                            2024-12-25 14:59:48
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-content markdown-body">
+                    <p>web-component是一种html原生的自定义组件解决方案，他不基于任何库或者框架。</p>
+<p>在web-component被多数主流浏览器支持之前，我们进行组件化开发通常需要依赖例如react、vue等js框架，而传统的html+js或者jquery则无法做到组件化的多处复用，这让原生js开发相当不便利，代码的可读性也比较差。</p>
+<p>web-component是一套技术，由以下三项技术组成：</p>
+<ol>
+<li>custom elemenet 自定义元素</li>
+<li>shadow dom 影子dom</li>
+<li>html template html模板</li>
+</ol>
+<h2>自定义元素</h2>
+<p>CustomElementRegistry.define() 原生js函数可以用于创建自定义元素，他增强了web-component的代码复用性。</p>
+<h3>CustomElementRegistry.define()说明</h3>
+<p>CustomElementRegistry.define(name, constructor, options)可以接收三个参数,其中options为可选参数</p>
+<ul>
+<li>name 元素名称字符串</li>
+<li>constructor 元素构造器，自定义的元素类，可继承元素基类HTMLElement，也可以继承内置元素，比如HTMLDivElement,HTMLParagraphElement等</li>
+<li>options 可选参数，目前只有一个extends，表示继承的元素，比如&quot;div&quot;</li>
+</ul>
+<p>元素类示例：</p>
+<pre><code>class MyDiv extends HTMLDivElement {
+  constructor() {
+    // Always call super first in constructor
+    super();
+        ...
+    }
+}
+
+customElements.define(&quot;my-div&quot;, MyDiv, { extends: &quot;div&quot; });
+</code></pre>
+<h2>shadow dom 影子dom</h2>
+<p>对于影子dom我已在<a href="/site/detail_27a8c85c-94e5-430a-8bfa-2312397973e2.html" title="《shadow dom》">《shadow dom》</a>中详细说明，感兴趣的可以前往查看。</p>
+<h2>html template html模板</h2>
+<p>模板技术主要包括template模板和slot插槽技术</p>
+<ol>
+<li><template>模板不会再初始化时渲染，他主要用作自定义元素的结构基础。</li>
+<li><slot>插槽是一个占位，在需要的时候可以用其他任意内容替换这个插槽位。</li>
+</ol>
+<p>这两个技术和vuejs框架的模板技术高度相似，他也增强了web-component的代码复用性。</p>
+<p>总结，web component在代码复用性，代码可读性，元素独立性，元素私有性方面具有优势，并且依赖原生js，不依赖第三方框架，而且目前主流浏览器的兼容性也已经做的很好了，所以他在创建无框架依赖的自定义组件上具有天然优势。</p>
+
+                </div>
+
+                <div class="tags font-16px color-999 mt-10px"><!--秒速-->
+                    
+                        
+                    
+                </div>
+                <h2>评论一下</h2>
+                <div id="comments" class="container-comments mt-20px">
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <!-- <script src="/js/jquery_dom.js"></script> -->
+    <script src='/plugins/valine/Valine.min.js'></script>
+
+    <script>
+        async function copyCode () {
+            try {
+                var code = $(event.target).closest("pre").children("code").text()
+                await navigator.clipboard.writeText(code)
+            } catch (err) {
+                // showMessage('0', err.message)
+            }
+        }
+        $(".markdown-body pre ").each((index, el) => {
+            $(el).prepend($(`
+                <a class="pre-code-copy" onclick="copyCode()">copy</a>
+            `))
+        })
+
+
+
+        new Valine({
+            el: '#comments',
+            appId: 'uz55qcFlXoLnmXaKik9HqQgI-gzGzoHsz',
+            appKey: 'AskBsksyQH7muT66he8uFG0V',
+            placeholder: "你是我一生只会遇见一次的惊喜 ...",
+            avatar: '',//小怪物头像,
+            visitor: true // 阅读量统
+        })
+    </script>
+</div></body>
+
+</html>
